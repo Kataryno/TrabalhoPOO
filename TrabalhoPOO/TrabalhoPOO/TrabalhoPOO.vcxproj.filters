@@ -221,9 +221,6 @@
     <ClCompile Include="..\..\eventos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\exemplo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\exoesqueleto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
