@@ -204,7 +204,6 @@
     <ClCompile Include="..\..\consola.cpp" />
     <ClCompile Include="..\..\desenha.cpp" />
     <ClCompile Include="..\..\eventos.cpp" />
-    <ClCompile Include="..\..\exemplo da prof.cpp" />
     <ClCompile Include="..\..\exemplo.cpp" />
     <ClCompile Include="..\..\exoesqueleto.cpp" />
     <ClCompile Include="..\..\flamejante.cpp" />
