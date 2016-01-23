@@ -11,7 +11,7 @@ UniCasulo::UniCasulo(char identificacao, Sala * sala) : UniXenomorfo(identificac
 	setNome("Casulo");
 	hp = 6;
 	caracteristicas.push_back(new CaractXenomorfo(0));
-	caracteristicas.push_back(new Exoesqueleto(2));
+	caracteristicas.push_back(new Exoesqueleto(1));
 	setSalaXenomorfo(sala);
 }
 
