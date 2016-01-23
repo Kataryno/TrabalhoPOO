@@ -187,6 +187,7 @@
     <ClInclude Include="..\..\toxico.h" />
     <ClInclude Include="..\..\tripulacao.h" />
     <ClInclude Include="..\..\UniBlob.h" />
+    <ClInclude Include="..\..\UniCasulo.h" />
     <ClInclude Include="..\..\unidade.h" />
     <ClInclude Include="..\..\UniGeigermorfo.h" />
     <ClInclude Include="..\..\UniXenomorfo.h" />
@@ -237,6 +238,7 @@
     <ClCompile Include="..\..\toxico.cpp" />
     <ClCompile Include="..\..\tripulacao.cpp" />
     <ClCompile Include="..\..\UniBlob.cpp" />
+    <ClCompile Include="..\..\UniCasulo.cpp" />
     <ClCompile Include="..\..\unidade.cpp" />
     <ClCompile Include="..\..\UniGeigermorfo.cpp" />
     <ClCompile Include="..\..\UniXenomorfo.cpp" />
