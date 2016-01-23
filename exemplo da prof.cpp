@@ -22,6 +22,7 @@ public:
 };
 
 coisas
+maravilhosas
 class Unidade {
 	//...etc
 	Sala * sala;
