@@ -1,3 +1,4 @@
+#include "libraries.h"
 #include "unidade.h"
 #include "caracteristica.h"
 #include "UniXenomorfo.h"
