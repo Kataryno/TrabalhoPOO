@@ -15,7 +15,7 @@ UniGeigermorfo::UniGeigermorfo(char identificacao, Sala * sala) : UniXenomorfo(i
 	setNome("Geigermorfo");
 	hp = 4;
 	caracteristicas.push_back(new CaractXenomorfo(3));
-	caracteristicas.push_back(new Misterioso());
+	caracteristicas.push_back(new Misterioso(1));  //O misterioso não precisa de parâmetros
 	caracteristicas.push_back(new Mover(50));
 	setSalaXenomorfo(sala);
 }
