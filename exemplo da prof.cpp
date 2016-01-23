@@ -21,7 +21,7 @@ public:
 	}
 };
 
-
+coisas
 class Unidade {
 	//...etc
 	Sala * sala;
