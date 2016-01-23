@@ -4,7 +4,7 @@
 #include "CaractInimigo.h"
 #include "mover.h"
 #include "UniXenomorfo.h"
-#include "UniGeigermorfo.h"
+#include "UniBlob.h"
 #include "CaractXenomorfo.h"
 #include "mover.h"
 #include "regenerador.h"
@@ -20,7 +20,7 @@ UniBlob::UniBlob(char identificacao, Sala * sala) : UniXenomorfo(identificacao)
 	hp = 8;
 	caracteristicas.push_back(new CaractXenomorfo(0));
 	caracteristicas.push_back(new Regenerador(2));
-	caracteristicas.push_back(new Flamejante());
+	caracteristicas.push_back(new Flamejante(5));
 	caracteristicas.push_back(new Toxico(1));
 	caracteristicas.push_back(new Reparador(6));
 	caracteristicas.push_back(new Operador());
