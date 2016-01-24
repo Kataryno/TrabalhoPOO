@@ -108,7 +108,7 @@ void main() {
 	opcoes.push_back("Pesquisar sala");
 	opcoes.push_back("Iniciar Jogo");
 	opcoes.push_back("Dificuldade");
-	opcoes.push_back("");
+	opcoes.push_back("Auto Configurar Nave");//Opção para testes mais rápido
 
 	int opcao = 0;
 	do {
@@ -208,7 +208,8 @@ void main() {
 				break;
 		case 6: ;
 			setNivel(consola);
-		case 7:	;
+		case 7:	
+			Apollo.preencheNaveAuto();
 			break;
 		}
 

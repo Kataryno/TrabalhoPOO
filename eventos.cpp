@@ -38,14 +38,15 @@ void eventos(Nave & nave, int nturnos)
 	if (turnoEvento + turnoAleatorio <= nturnos || nturnos == 1)
 	{
 		srand((unsigned)time(NULL));
-		int probEvento = rand() % 100 + 1;
+		/*int probEvento = rand() % 100 + 1;
 		if (probEvento < 25)
 			eventoPoCosmico(nave);
 		else if (probEvento >= 25 && probEvento < 50)
 			;
 		else if (probEvento >= 50 && probEvento < 75)
 			;
-		else;
+		else;*/
+		eventoAtaquePirata(nave);
 		turnoEvento = nturnos;
 		turnoAleatorio = rand() % (10 - 5 + 1) + 5;
 	}
@@ -57,9 +58,9 @@ void eventoChuvaMeteoritos(Nave & nave)
 	srand((unsigned)time(NULL));
 	vector<Sala *> salas = nave.getVectorSalas();
 	bool PonteOperada = salas[7]->getOperada();
-	bool LaserOperado = false; bool ExisteEscudo = false;
+	bool LaserOperado = false; 
 	int PosicaoEscudo;
-	int ataques;
+	int ataques; int restoDano;
 	for (unsigned int i = 0; i < salas.size(); i++)
 	{
 		if (salas[i]->getNome() == "RaioLaser")
@@ -68,11 +69,6 @@ void eventoChuvaMeteoritos(Nave & nave)
 			{
 				LaserOperado = true;
 			}
-		}
-		if (salas[i]->getNome() == "Escudo")
-		{
-			ExisteEscudo = true;
-			PosicaoEscudo = i;
 		}
 	}
 	if (PonteOperada)
@@ -84,9 +80,15 @@ void eventoChuvaMeteoritos(Nave & nave)
 			{
 				if (rand() % (50 - 1 + 1) + 1 <= 50)
 				{
-					if (ExisteEscudo)
+					if (salas[6]->getEscudo() != 0)
 					{
-						salas[PosicaoEscudo]->setDiminuiEscudo(10);
+						restoDano=salas[6]->setDiminuiEscudo(10);
+						if (restoDano != 0)
+						{
+							int s = rand() % 12;
+							salas[s]->setDiminuiIntegridade(restoDano);
+							salas[s]->setBrecha();
+						}
 					}
 					else
 					{
@@ -102,16 +104,22 @@ void eventoChuvaMeteoritos(Nave & nave)
 		{
 			for (unsigned int i = 0; i < ataques; i++)
 			{
-					if (ExisteEscudo)
-					{
-						salas[PosicaoEscudo]->setDiminuiEscudo(10);
-					}
-					else
+				if (salas[6]->getEscudo() != 0)
+				{
+					restoDano = salas[6]->setDiminuiEscudo(10);
+					if (restoDano != 0)
 					{
 						int s = rand() % 12;
-						salas[s]->setDiminuiIntegridade(10);
+						salas[s]->setDiminuiIntegridade(restoDano);
 						salas[s]->setBrecha();
-					}	
+					}
+				}
+				else
+				{
+					int s = rand() % 12;
+					salas[s]->setDiminuiIntegridade(10);
+					salas[s]->setBrecha();
+				}
 
 			}
 
@@ -126,9 +134,15 @@ void eventoChuvaMeteoritos(Nave & nave)
 			{
 				if (rand() % (50 - 1 + 1) + 1 <= 50)
 				{
-					if (ExisteEscudo)
+					if (salas[6]->getEscudo() != 0)
 					{
-						salas[PosicaoEscudo]->setDiminuiEscudo(10);
+						restoDano = salas[6]->setDiminuiEscudo(10);
+						if (restoDano != 0)
+						{
+							int s = rand() % 12;
+							salas[s]->setDiminuiIntegridade(restoDano);
+							salas[s]->setBrecha();
+						}
 					}
 					else
 					{
@@ -144,9 +158,15 @@ void eventoChuvaMeteoritos(Nave & nave)
 		{
 			for (unsigned int i = 0; i < ataques; i++)
 			{
-				if (ExisteEscudo)
+				if (salas[6]->getEscudo() != 0)
 				{
-					salas[PosicaoEscudo]->setDiminuiEscudo(10);
+					restoDano = salas[6]->setDiminuiEscudo(10);
+					if (restoDano != 0)
+					{
+						int s = rand() % 12;
+						salas[s]->setDiminuiIntegridade(restoDano);
+						salas[s]->setBrecha();
+					}
 				}
 				else
 				{
@@ -158,6 +178,7 @@ void eventoChuvaMeteoritos(Nave & nave)
 			}
 
 		}
+				
 
 	}
 }

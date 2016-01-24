@@ -16,6 +16,12 @@
 #include "consola.h"
 #include "pirata.h"
 #include "UniXenomorfo.h"
+#include "salabeliche.h"
+#include "salaenfermaria.h"
+#include "salaarmas.h"
+#include "salaraiolaser.h"
+#include "salareparadora.h"
+
 
 int Nave::totalTripulantes = 3;
 int Nave::DistanciaPercorrida = 0;
@@ -23,6 +29,7 @@ int Nave::DistanciaPercorrida = 0;
 Nave::Nave()
 {
 	int incremento = 12;
+			
 			salas.push_back(new SalaPropulsor());
 			salas.push_back(nullptr);
 			salas.push_back(nullptr);
@@ -160,6 +167,16 @@ int Nave::pesquisaSala(string & nome) const {
 		if (nome == salas[i]->getNome())
 			return i;
 	return -1;
+}
+
+void Nave::preencheNaveAuto()
+{
+	alteraNave(new SalaRaioLaser, 2 - 1);
+	alteraNave(new SalaArmas, 3 - 1);
+	alteraNave(new SalaEnfermaria, 4 - 1);
+	alteraNave(new SalaCapitao, 10 - 1);
+	alteraNave(new SalaReparadora, 11 - 1);
+	alteraNave(new SalaEnfermaria, 12 - 1);
 }
 
 string Nave::getNomeSala(int pos) const
@@ -416,6 +433,13 @@ int Nave::getIntegridadeSala(int pos) const
 	return salas[pos]->getIntegridade();
 }
 
+int Nave::getEscudoSalaEscudo(int pos) const
+{
+	return salas[pos]->getEscudo();
+}
+
+
+
 void Nave::mostraIntegridadeSalas(Nave & nave, Consola & consola)
 {
 	consola.setTextColor(consola.CYAN);
@@ -461,6 +485,8 @@ void Nave::mostraOxigenioSalas(Nave & nave, Consola & consola)
 	cout << "O2: " << nave.getO2Sala(4) << "%";
 	consola.gotoxy(30, 22);
 	cout << "O2: " << nave.getO2Sala(5) << "%";
+	consola.gotoxy(42, 20);
+	cout << "Esc: " << nave.getEscudoSalaEscudo(6) << "%";
 	consola.gotoxy(42, 22);
 	cout << "O2: " << nave.getO2Sala(6) << "%";
 	consola.gotoxy(54, 22);

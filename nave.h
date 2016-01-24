@@ -27,12 +27,15 @@ public:
 
 	string getAsString() const;
 
+	//Test Functions
+	void preencheNaveAuto();
 	//Get Functions
 	string getNomeSala(int pos) const;
 	bool getAposentoCapitao();
 	bool getOficinaRobot();
 	int getDistanciaPercorrida();
 	int getIntegridadeSala(int pos) const;
+	int getEscudoSalaEscudo(int pos)const;
 	int getO2Sala(int pos) const;
 	vector<Sala *> getVectorSalas()const;
 	//Set Functions
