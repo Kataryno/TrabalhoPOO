@@ -148,6 +148,8 @@
     <ClInclude Include="..\..\caracteristica.h" />
     <ClInclude Include="..\..\CaractInimigo.h" />
     <ClInclude Include="..\..\caractoperador.h" />
+    <ClInclude Include="..\..\Caractrobotico.h" />
+    <ClInclude Include="..\..\Caracttripulacao.h" />
     <ClInclude Include="..\..\CaractXenomorfo.h" />
     <ClInclude Include="..\..\casulo.h" />
     <ClInclude Include="..\..\combatente.h" />
@@ -200,6 +202,8 @@
     <ClCompile Include="..\..\caracteristica.cpp" />
     <ClCompile Include="..\..\CaractInimigo.cpp" />
     <ClCompile Include="..\..\caractoperador.cpp" />
+    <ClCompile Include="..\..\Caractrobotico.cpp" />
+    <ClCompile Include="..\..\Caracttripulacao.cpp" />
     <ClCompile Include="..\..\CaractXenomorfo.cpp" />
     <ClCompile Include="..\..\casulo.cpp" />
     <ClCompile Include="..\..\combatente.cpp" />

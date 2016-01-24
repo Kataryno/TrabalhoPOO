@@ -6,6 +6,7 @@
 #include "reparador.h"
 #include "caractoperador.h"
 #include "caracteristica.h"
+#include "Caracttripulacao.h"
 
 MembroTrip::MembroTrip(char identificacao) : Tripulacao(identificacao)
 {
@@ -16,6 +17,7 @@ MembroTrip::MembroTrip(char identificacao) : Tripulacao(identificacao)
 	caracteristicas.push_back(new Reparador(1));
 	caracteristicas.push_back(new Combatente(1));
 	caracteristicas.push_back(new Operador());
+	caracteristicas.push_back(new Caracttripulacao());
 }
 
 
