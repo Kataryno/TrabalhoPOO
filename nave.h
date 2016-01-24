@@ -63,7 +63,7 @@ public:
 
 	//Tripulação Related
 	char getIdTripulante(int & pos) const;
-	string mostraTripulantes() const;
+	string mostraTripulantes(Consola & consola) const;
 	int pesquisaTripulante(char identificacao) const;
 	void mostraOcupanteSala(Consola & consola);
 	//void criaTripulacao(const Nave & x);
@@ -72,9 +72,11 @@ public:
 	//Inimigos Related
 	void criaInimigos();
 	int pesquisaInimigo(char identificacao) const;
+	void mostraOcupanteSalaInimigos(Consola & consola);
 
 	//Xenomorfos Related
 	void criaXenomorfos();
+	void mostraOcupanteSalaXenomorfos(Consola & consola);
 };
 
 ostream & operator<<(ostream & saida, const Nave & x);

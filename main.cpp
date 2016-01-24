@@ -529,6 +529,8 @@ void TratamentoComandos(Nave & nave, Consola & consola, bool & jogoActivo)
 		mostraNomeSalas(nave, consola);
 		mostraIdSalas(consola);
 		nave.mostraOcupanteSala(consola);
+		nave.mostraOcupanteSalaInimigos(consola);
+		nave.mostraOcupanteSalaXenomorfos(consola);
 
 		if (jogoActivo)
 		{
@@ -540,8 +542,9 @@ void TratamentoComandos(Nave & nave, Consola & consola, bool & jogoActivo)
 			nave.mostraOxigenioSalas(nave, consola);
 		}
 
-		consola.gotoxy(1, 45);
-		cout << nave.mostraTripulantes() << endl;
+		//consola.gotoxy(1, 45);
+		nave.mostraTripulantes(consola);
+		//cout << nave.mostraTripulantes(consola) << endl;
 		consola.gotoxy(1, 57);
 		cout << "Comando > ";
 

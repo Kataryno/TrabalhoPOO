@@ -14,6 +14,9 @@ Tripulacao::Tripulacao(char identificacao)
 string Tripulacao::getAsString() const
 {
 	ostringstream oss;
-	oss << getId() << "-" << getNome() << "-" << getSala();
+	if (getSala() == -1)
+		oss << getId() << " - " << getNome() << " - PV: " << getHp() << " Sala: Sem sala atribuida";
+	else
+		oss << getId() << " - " << getNome() << " - PV: " << getHp() << " Sala: " << getSala() + 1;
 	return oss.str();
 }

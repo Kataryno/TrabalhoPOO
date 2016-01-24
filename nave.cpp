@@ -262,18 +262,104 @@ char Nave::getIdTripulante(int & pos) const
 }
 
 
-string Nave::mostraTripulantes() const
+string Nave::mostraTripulantes(Consola & consola) const
 {
 	ostringstream oss;
-
+	
 	for (unsigned int i = 0; i < tripulantes.size(); i++)
 	{
 		if (tripulantes[i] != nullptr)
-			oss << tripulantes[i]->getAsString() << endl;
+		{
+			consola.gotoxy(1, 45 + i);
+			cout << tripulantes[i]->getAsString() << endl;
+		}
 		else
 			oss << "Vazio" << endl;
 	}
 	return oss.str();
+}
+
+//string Nave::mostraTripulantes(Consola & consola) const
+//{
+//	ostringstream oss;
+//
+//	consola.gotoxy(1, 45);
+//
+//	for (unsigned int i = 0; i < tripulantes.size(); i++)
+//	{
+//		if (tripulantes[i] != nullptr)
+//			oss << tripulantes[i]->getAsString() << endl;
+//		else
+//			oss << "Vazio" << endl;
+//	}
+//	return oss.str();
+//}
+
+void Nave::mostraOcupanteSalaInimigos(Consola & consola)
+{
+	ostringstream oss0, oss1, oss2, oss3, oss4, oss5, oss6, oss7, oss8, oss9, oss10, oss11;
+
+	consola.setTextColor(consola.COR_DE_ROSA);
+
+	for (unsigned int j = 0; j < inimigos.size(); j++)
+	{
+		if (inimigos[j] != nullptr)
+		{
+			switch (inimigos[j]->getSala())
+			{
+			case 0: oss0 << "I-" << inimigos[j]->getId() << "-";
+				break;
+			case 1: oss1 << "I-" << inimigos[j]->getId() << "-";
+				break;
+			case 2: oss2 << "I-" << inimigos[j]->getId() << "-";
+				break;
+			case 3: oss3 << "I-" << inimigos[j]->getId() << "-";
+				break;
+			case 4: oss4 << "I-" << inimigos[j]->getId() << "-";
+				break;
+			case 5: oss5 << "I-" << inimigos[j]->getId() << "-";
+				break;
+			case 6: oss6 << "I-" << inimigos[j]->getId() << "-";
+				break;
+			case 7: oss7 << "I-" << inimigos[j]->getId() << "-";
+				break;
+			case 8: oss8 << "I-" << inimigos[j]->getId() << "-";
+				break;
+			case 9: oss9 << "I-" << inimigos[j]->getId() << "-";
+				break;
+			case 10: oss10 << "I-" << inimigos[j]->getId() << "-";
+				break;
+			case 11: oss11 << "I-" << inimigos[j]->getId() << "-";
+				break;
+			}
+		}
+	}
+	consola.gotoxy(6, 4);
+	cout << oss0.str();
+	consola.gotoxy(18, 4);
+	cout << oss1.str();
+	consola.gotoxy(30, 4);
+	cout << oss2.str();
+	consola.gotoxy(42, 4);
+	cout << oss3.str();
+	consola.gotoxy(18, 16);
+	cout << oss4.str();
+	consola.gotoxy(30, 16);
+	cout << oss5.str();
+	consola.gotoxy(42, 16);
+	cout << oss6.str();
+	consola.gotoxy(54, 16);
+	cout << oss7.str();
+	consola.gotoxy(6, 28);
+	cout << oss8.str();
+	consola.gotoxy(18, 28);
+	cout << oss9.str();
+	consola.gotoxy(30, 28);
+	cout << oss10.str();
+	consola.gotoxy(42, 28);
+	cout << oss11.str();
+
+	consola.setTextColor(consola.BRANCO);
 }
 
 
@@ -343,6 +429,75 @@ void Nave::mostraOcupanteSala(Consola & consola)
 	
 	consola.setTextColor(consola.BRANCO);
 }
+
+
+void Nave::mostraOcupanteSalaXenomorfos(Consola & consola)
+{
+	ostringstream oss0, oss1, oss2, oss3, oss4, oss5, oss6, oss7, oss8, oss9, oss10, oss11;
+
+	consola.setTextColor(consola.CINZENTO);
+
+	for (unsigned int j = 0; j < xenomorfos.size(); j++)
+	{
+		if (xenomorfos[j] != nullptr)
+		{
+			switch (xenomorfos[j]->getSala())
+			{
+			case 0: oss0 << "X-" << xenomorfos[j]->getId() << "-";
+				break;
+			case 1: oss1 << "X-" << xenomorfos[j]->getId() << "-";
+				break;
+			case 2: oss2 << "X-" << xenomorfos[j]->getId() << "-";
+				break;
+			case 3: oss3 << "X-" << xenomorfos[j]->getId() << "-";
+				break;
+			case 4: oss4 << "X-" << xenomorfos[j]->getId() << "-";
+				break;
+			case 5: oss5 << "X-" << xenomorfos[j]->getId() << "-";
+				break;
+			case 6: oss6 << "X-" << xenomorfos[j]->getId() << "-";
+				break;
+			case 7: oss7 << "X-" << xenomorfos[j]->getId() << "-";
+				break;
+			case 8: oss8 << "X-" << xenomorfos[j]->getId() << "-";
+				break;
+			case 9: oss9 << "X-" << xenomorfos[j]->getId() << "-";
+				break;
+			case 10: oss10 << "X-" << xenomorfos[j]->getId() << "-";
+				break;
+			case 11: oss11 << "X-" << xenomorfos[j]->getId() << "-";
+				break;
+			}
+		}
+	}
+	consola.gotoxy(6, 5);
+	cout << oss0.str();
+	consola.gotoxy(18, 5);
+	cout << oss1.str();
+	consola.gotoxy(30, 5);
+	cout << oss2.str();
+	consola.gotoxy(42, 5);
+	cout << oss3.str();
+	consola.gotoxy(18, 17);
+	cout << oss4.str();
+	consola.gotoxy(30, 17);
+	cout << oss5.str();
+	consola.gotoxy(42, 17);
+	cout << oss6.str();
+	consola.gotoxy(54, 17);
+	cout << oss7.str();
+	consola.gotoxy(6, 29);
+	cout << oss8.str();
+	consola.gotoxy(18, 29);
+	cout << oss9.str();
+	consola.gotoxy(30, 29);
+	cout << oss10.str();
+	consola.gotoxy(42, 29);
+	cout << oss11.str();
+
+	consola.setTextColor(consola.BRANCO);
+}
+
 
 void Nave::avancaNave()
 {
