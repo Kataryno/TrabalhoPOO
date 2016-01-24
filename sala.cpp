@@ -307,20 +307,27 @@ void Sala::eliminaSalaAdjacente()
 
 void Sala::gasesToxicos(int pontos)
 {
+	vector<Unidade *> aux;
+	
+	//Cria-se um vector auxiliar para poder percorrer todo o vector, sem existir a possibilidade de deixar algum elemento por verificar, devido ao vector ter sido mudificado.
+	aux = ocupantesTripulacao; 
+	
 	//Percorre o vector da tripulação
-	for (int i = 0; i < ocupantesTripulacao.size(); i++)
-		if (!ocupantesTripulacao[i]->getToxico())
-			ocupantesTripulacao[i]->levaDano(pontos);
+	for (int i = 0; i < aux.size(); i++)
+		if (!aux[i]->getToxico())
+			aux[i]->levaDano(pontos);
 
 	//Percorre o vector de inimigos
-	for (int i = 0; i < ocupantesInimigos.size(); i++)
-		if (!ocupantesInimigos[i]->getToxico())
-			ocupantesInimigos[i]->levaDano(pontos);
+	aux = ocupantesInimigos;
+	for (int i = 0; i < aux.size(); i++)
+		if (!aux[i]->getToxico())
+			aux[i]->levaDano(pontos);
 
 	//Percorre o vector de xenomorfos
-	for (int i = 0; i < ocupantesXenomorfos.size(); i++)
-		if (!ocupantesXenomorfos[i]->getToxico())
-			ocupantesXenomorfos[i]->levaDano(pontos);
+	aux = ocupantesXenomorfos;
+	for (int i = 0; i < aux.size(); i++)
+		if (!aux[i]->getToxico())
+			aux[i]->levaDano(pontos);
 }
 
 //Para apagar. A função fazia uma cópia do tripulante em vez de ficar a apontar para a lista

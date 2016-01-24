@@ -189,3 +189,15 @@ void mostraIdSalas(Consola & consola)
 	cout << "12";
 	consola.setTextColor(consola.BRANCO);
 }
+
+void Interface(Consola & consola, Nave & nave)
+{
+	consola.clrscr();
+	desenhaMoldura(consola);
+	desenhaNave(nave, consola);
+	mostraNomeSalas(nave, consola);
+	mostraIdSalas(consola);
+	nave.mostraOcupanteSala(consola);
+	nave.mostraOcupanteSalaInimigos(consola);
+	nave.mostraOcupanteSalaXenomorfos(consola);
+}
