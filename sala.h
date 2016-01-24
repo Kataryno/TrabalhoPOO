@@ -68,6 +68,7 @@ public:
 	int pesquisaOcupanteTripulacao(char identificacao);
 	int pesquisaOcupanteInimigo(char identificacao);
 	int pesquisaOcupanteXenomorfo(char identificacao);
+	void gasesToxicos(int pontos);
 
 };
 

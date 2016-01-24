@@ -102,3 +102,12 @@ bool Unidade::getOperador()
 			return true;
 	return false;
 }
+
+//Percorre o vector das características para verificar se é Operador. Se encontrou essa característica retorna true, senão false.
+bool Unidade::getToxico()
+{
+	for (int i = 0; i < caracteristicas.size(); i++)
+		if (caracteristicas[i]->getNome() == "Toxico")
+			return true;
+	return false;
+}

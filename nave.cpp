@@ -554,6 +554,22 @@ void Nave::danificaNave(int sala,int dano)
 	salas[sala]->setDiminuiIntegridade(dano);
 }
 
+
+void Nave::InicioTurno()
+{
+	//1º Efeitos Ambientais
+	AmbientaisFimTurno(salas);
+	
+	//3º Acções dos xenomorfos
+	for (unsigned int i = 0; i < xenomorfos.size(); i++)
+		xenomorfos[i]->InicioTurno();
+	
+	//5º Acções dos tripulantes
+	for (unsigned int i = 0; i < tripulantes.size(); i++)
+		tripulantes[i]->InicioTurno();
+}
+
+
 void Nave::FimTurno()
 
 {
@@ -566,16 +582,6 @@ void Nave::FimTurno()
 	for (unsigned int i = 0; i < tripulantes.size(); i++)
 		tripulantes[i]->FimTurno();
 }
-
-void Nave::InicioTurno()
-{
-	//1º Efeitos Ambientais
-	AmbientaisFimTurno(salas);
-	//5º Acções dos tripulantes
-	for (unsigned int i = 0; i < tripulantes.size(); i++)
-		tripulantes[i]->InicioTurno();
-}
-
 
 int Nave::pesquisaTripulante(char identificacao) const
 {
@@ -866,3 +872,13 @@ void Nave::removeSalasAdjacentes()
 //
 //	consola.setTextColor(consola.BRANCO);
 //}
+
+
+//PARA APAGAR
+///Função para criar Blobs para teste de gases tóxicos
+void Nave::criaBlobs()
+{
+	for (int i = 0; i < 12; i++)
+		xenomorfos.push_back(new UniBlob(65 + xenomorfos.size(), salas[i]));
+	xenomorfos.push_back(new UniGeigermorfo(65 + xenomorfos.size(), salas[6]));
+}
