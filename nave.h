@@ -77,7 +77,7 @@ public:
 	int pesquisaInimigo(char identificacao) const;
 
 	//Xenomorfos Related
-
+	void criaXenomorfos();
 };
 
 ostream & operator<<(ostream & saida, const Nave & x);

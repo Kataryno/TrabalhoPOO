@@ -21,6 +21,10 @@
 #include "salaarmas.h"
 #include "salaraiolaser.h"
 #include "salareparadora.h"
+#include "UniGeigermorfo.h"
+#include "UniCasulo.h"
+#include "UniBlob.h"
+#include "UniMxyzypykwi.h"
 
 
 int Nave::totalTripulantes = 3;
@@ -112,7 +116,7 @@ void Nave::criaInimigos()
 {
 	int idSala;
 	//rand()%(max-min + 1) + min;
-	//preencher o vector de inimigos quando o envento coloca inimgos na nave
+	//Preenche o vector de inimigos quando o evento Ataque de inimigos coloca piratas na nave
 		int nInimigos = rand() % (5 - 3 + 1) + 3; //aleatorio entre 3 e 5
 
 		for (int i = 0; i < nInimigos && inimigos.size() < 26; i++)
@@ -120,6 +124,27 @@ void Nave::criaInimigos()
 			idSala = rand() % 11;
 			inimigos.push_back(new Pirata(65 + inimigos.size(), salas[idSala]));
 		}
+}
+
+void Nave::criaXenomorfos()
+{
+	//rand()%(max-min + 1) + min;
+
+	//Preenche o vector de xenomorfos quando o evento Ataque de Xenomorfo coloca um xenomorfo na nave
+
+	int idSala = rand() % 11;
+	int tipoXenomorfo = rand() % 2;
+	switch (tipoXenomorfo)
+	{
+	case 0: xenomorfos.push_back(new UniGeigermorfo(65 + xenomorfos.size(), salas[idSala]));
+		break;
+	case 1: xenomorfos.push_back(new UniBlob(65 + xenomorfos.size(), salas[idSala]));
+		break;
+	case 2: xenomorfos.push_back(new UniMxyzypykwi(65 + xenomorfos.size(), salas[idSala]));
+		break;
+	default:
+		break;
+	}
 }
 
 //void Nave::atribuiSalaInimigo(int & pos, int idSala)

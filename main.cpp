@@ -441,7 +441,10 @@ void opcaoConfigurarNave(Nave & nave, Consola & consola)
 	
 	//Chama função que preenche o vector de salasAddjacecntes de cada sala da nave
 	nave.preencheSalasAdjacentes();
+
+	//Para testes. Apagar depois
 	nave.criaInimigos();
+	nave.criaXenomorfos();
 }
 
 void opcaoConfigurarTripulacao(Nave & nave, Consola & consola, bool & jogoActivo)
