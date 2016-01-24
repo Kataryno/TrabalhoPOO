@@ -118,6 +118,10 @@ void Sala::setAumentaIntegridade(int n)
 void Sala::setDiminuiOxigenio(int n)
 {
 	o2 -= n;
+	if (o2 <= 0)
+	{
+		o2 = 0;
+	}
 }
 
 void Sala::setAumentaOxigenio(int n)

@@ -28,8 +28,6 @@
 #include "UniMxyzypykwi.h"
 #include "ambientais.h"
 
-//TETETTETETETETETETET
-
 int Nave::totalTripulantes = 3;
 int Nave::DistanciaPercorrida = 0;
 

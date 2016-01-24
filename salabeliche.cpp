@@ -13,4 +13,5 @@ string SalaBeliche::getAsString() const
 
 void SalaBeliche::FimTurno(vector<Sala*> salas)
 {
+	
 }

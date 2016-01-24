@@ -12,6 +12,7 @@ MembroTrip::MembroTrip(char identificacao) : Tripulacao(identificacao)
 {
 	setNome("Membro Tripulacao");
 	hp = 5;
+	setMaxHP(hp);
 	caracteristicas.push_back(new Respira());
 	//caracteristicas.push_back(new Respira(1));
 	caracteristicas.push_back(new Reparador(1));
