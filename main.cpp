@@ -443,8 +443,8 @@ void opcaoConfigurarNave(Nave & nave, Consola & consola)
 	nave.preencheSalasAdjacentes();
 
 	//Para testes. Apagar depois
-	nave.criaInimigos();
-	nave.criaXenomorfos();
+	//nave.criaInimigos();
+	//nave.criaXenomorfos();
 }
 
 void opcaoConfigurarTripulacao(Nave & nave, Consola & consola, bool & jogoActivo)
@@ -541,6 +541,7 @@ void TratamentoComandos(Nave & nave, Consola & consola, bool & jogoActivo)
 			cout << "TURNO: " << n_turnos << endl;
 			nave.mostraIntegridadeSalas(nave, consola);
 			nave.mostraOxigenioSalas(nave, consola);
+			nave.mostraEfeitosAmbientaisSalas(nave, consola);
 		}
 
 		//consola.gotoxy(1, 45);

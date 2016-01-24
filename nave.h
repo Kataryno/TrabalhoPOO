@@ -37,6 +37,7 @@ public:
 	int getIntegridadeSala(int pos) const;
 	int getEscudoSalaEscudo(int pos)const;
 	int getO2Sala(int pos) const;
+	
 	vector<Sala *> getVectorSalas()const;
 	//Set Functions
 	void setAposentoCapitao(bool inf);
@@ -63,6 +64,7 @@ public:
 	void removeSalasAdjacentes();
 	void mostraOxigenioSalas(Nave & nave, Consola & consola);
 	void mostraIntegridadeSalas(Nave & nave, Consola & consola);
+	void mostraEfeitosAmbientaisSalas(Nave & nave, Consola & consola);
 
 	//Tripulação Related
 	char getIdTripulante(int & pos) const;

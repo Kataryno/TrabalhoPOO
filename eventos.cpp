@@ -2,6 +2,7 @@
 #include "nave.h"
 #include "eventos.h"
 #include "sala.h"
+#include "ambientais.h"
 #include <time.h>
 
 #define N 5
@@ -46,7 +47,7 @@ void eventos(Nave & nave, int nturnos)
 		else if (probEvento >= 50 && probEvento < 75)
 			;
 		else;*/
-		eventoAtaquePirata(nave);
+		eventoChuvaMeteoritos(nave);
 		turnoEvento = nturnos;
 		turnoAleatorio = rand() % (10 - 5 + 1) + 5;
 	}
@@ -188,7 +189,7 @@ void eventoAtaquePirata(Nave & nave)
 	srand((unsigned)time(NULL));
 	vector<Sala *> salas = nave.getVectorSalas();
 	bool LaserOperado = false; 
-	int restoDano;
+	int restoDano, efeito,s;
 	int dano = rand() % (60 - 30 + 1) + 30;
 	for (unsigned int i = 0; i < salas.size(); i++)
 	{
@@ -201,19 +202,39 @@ void eventoAtaquePirata(Nave & nave)
 		}
 
 	}
-	if(salas[6]->getEscudo()==0)
+	if(salas[6]->getEscudo()==0)//se o escudo estiver a 0, ataca logo uma sala aleatoria
 	{ 
-		salas[6]->setDiminuiIntegridade(dano);
-		//falta tratar parte danos ambientais
-	
-	}
-	else
-	{
-		restoDano = salas[6]->setDiminuiEscudo(dano);
-		if (restoDano != 0)
+		s = rand() % 12;
+		salas[s]->setDiminuiIntegridade(dano);
+		efeito=rand() % 4;
+		switch (efeito)
 		{
-			salas[6]->setDiminuiIntegridade(restoDano);
-			//falta tratar a parte dos danos ambientais, 
+		case 1:
+			salas[s]->setBrecha();
+		case 2:
+			salas[s]->setFogo();
+		case 3:
+			salas[s]->setCC();
+		}
+
+	}
+	else//escudo ainda tem força
+	{
+		restoDano = salas[6]->setDiminuiEscudo(dano);//dá dano no escudo
+		if (restoDano != 0)//se ainda sobrou dano, escolhemos sala aleatoria para receber esse resto
+		{
+			s = rand() % 12;
+			salas[s]->setDiminuiIntegridade(dano);
+			efeito = rand() % 4;
+			switch (efeito)
+			{
+			case 1:
+				salas[s]->setBrecha();
+			case 2:
+				salas[s]->setFogo();
+			case 3:
+				salas[s]->setCC();
+			}
 		}
 	}
 		

@@ -6,10 +6,11 @@
 class Unidade;
 class Tripulacao;
 
+
 class Sala {
 	string nome;
 	int id;
-	bool brecha;
+	bool brecha, fogo, curtocircuito;
 	vector<Unidade *> ocupantesTripulacao;
 	vector<Unidade *> ocupantesXenomorfos;
 	vector<Unidade *> ocupantesInimigos;
@@ -19,9 +20,7 @@ protected:
 	int saude;
 	int o2;
 	int integridade;
-	bool fogo;
 	
-	bool cc;
 	
 
 	void setNome(string n) {
@@ -39,10 +38,15 @@ public:
 	int getSaude() const;
 	int getIntegridade() const;
 	int getO2()const;
+	bool getBrecha()const;
+	bool getFogo()const;
+	bool getCC()const;
 	string getNome() const;
 	int getId() const;
 	virtual int getEscudo()const = 0;
-	vector <Unidade *> getTripulacao();
+	vector <Unidade *> getTripulacao()const;
+	vector <Unidade *> getInimigos()const;
+	vector <Unidade *> getXenomorfos()const;
 	//set Functions
 	void setId(int idSala);
 	void setDiminuiIntegridade(int n);
@@ -50,6 +54,8 @@ public:
 	void setDiminuiOxigenio(int n);
 	void setAumentaOxigenio(int n);
 	void setBrecha();
+	void setFogo();
+	void setCC();
 	//ocupantes Related
 	bool apagaOcupanteTripulacao(Unidade * ocupante);
 	bool apagaOcupanteInimigo(Unidade * ocupante);

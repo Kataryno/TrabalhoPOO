@@ -21,10 +21,12 @@
 #include "salaarmas.h"
 #include "salaraiolaser.h"
 #include "salareparadora.h"
+#include "salaseguranca.h"
 #include "UniGeigermorfo.h"
 #include "UniCasulo.h"
 #include "UniBlob.h"
 #include "UniMxyzypykwi.h"
+#include "ambientais.h"
 
 
 int Nave::totalTripulantes = 3;
@@ -196,12 +198,12 @@ int Nave::pesquisaSala(string & nome) const {
 
 void Nave::preencheNaveAuto()
 {
-	alteraNave(new SalaRaioLaser, 2 - 1);
-	alteraNave(new SalaArmas, 3 - 1);
-	alteraNave(new SalaEnfermaria, 4 - 1);
-	alteraNave(new SalaCapitao, 10 - 1);
-	alteraNave(new SalaReparadora, 11 - 1);
-	alteraNave(new SalaEnfermaria, 12 - 1);
+	alteraNave(new SalaRaioLaser(), 2 - 1);
+	alteraNave(new SalaArmas(), 3 - 1);
+	alteraNave(new SalaEnfermaria(), 4 - 1);
+	alteraNave(new SalaCapitao(), 10 - 1);
+	alteraNave(new SalaReparadora(), 11 - 1);
+	alteraNave(new SalaSeguranca(), 12 - 1);
 }
 
 string Nave::getNomeSala(int pos) const
@@ -554,6 +556,8 @@ void Nave::danificaNave(int sala,int dano)
 void Nave::FimTurno()
 
 {
+	//1º Efeitos Ambientais
+	AmbientaisInicioTurno(salas);
 	//2º Salas
 	for (unsigned int i = 0; i < salas.size(); i++)
 		salas[i]->FimTurno(salas);
@@ -564,6 +568,8 @@ void Nave::FimTurno()
 
 void Nave::InicioTurno()
 {
+	//1º Efeitos Ambientais
+	AmbientaisFimTurno(salas);
 	//5º Acções dos tripulantes
 	for (unsigned int i = 0; i < tripulantes.size(); i++)
 		tripulantes[i]->InicioTurno();
@@ -650,6 +656,36 @@ void Nave::mostraIntegridadeSalas(Nave & nave, Consola & consola)
 	consola.setTextColor(consola.BRANCO);
 }
 
+void Nave::mostraEfeitosAmbientaisSalas(Nave & nave, Consola & consola)
+{
+	consola.setTextColor(consola.ROXO);
+	consola.gotoxy(6, 8);
+	if (salas[0]->getBrecha()) cout << "B "; if (salas[0]->getFogo()) cout << " F "; if (salas[0]->getCC()) cout << " CC ";
+	consola.gotoxy(18, 8);
+	if (salas[1]->getBrecha()) cout << "B "; if (salas[0]->getFogo()) cout << " F "; if (salas[0]->getCC()) cout << " CC ";
+	consola.gotoxy(30, 8);
+	if (salas[2]->getBrecha()) cout << "B "; if (salas[0]->getFogo()) cout << " F "; if (salas[0]->getCC()) cout << " CC ";
+	consola.gotoxy(42, 8);
+	if (salas[3]->getBrecha()) cout << "B "; if (salas[0]->getFogo()) cout << " F "; if (salas[0]->getCC()) cout << " CC ";
+	consola.gotoxy(18, 20);
+	if (salas[4]->getBrecha()) cout << "B "; if (salas[0]->getFogo()) cout << " F "; if (salas[0]->getCC()) cout << " CC ";
+	consola.gotoxy(30, 20);
+	if (salas[5]->getBrecha()) cout << "B "; if (salas[0]->getFogo()) cout << " F "; if (salas[0]->getCC()) cout << " CC ";
+	consola.gotoxy(42, 20);
+	if (salas[6]->getBrecha()) cout << "B "; if (salas[0]->getFogo()) cout << " F "; if (salas[0]->getCC()) cout << " CC ";
+	consola.gotoxy(54, 20);
+	if (salas[7]->getBrecha()) cout << "B "; if (salas[0]->getFogo()) cout << " F "; if (salas[0]->getCC()) cout << " CC ";
+	consola.gotoxy(6, 32);
+	if (salas[8]->getBrecha()) cout << "B "; if (salas[0]->getFogo()) cout << " F "; if (salas[0]->getCC()) cout << " CC ";
+	consola.gotoxy(18, 32);
+	if (salas[9]->getBrecha()) cout << "B "; if (salas[0]->getFogo()) cout << " F "; if (salas[0]->getCC()) cout << " CC ";
+	consola.gotoxy(30, 32);
+	if (salas[10]->getBrecha()) cout << "B "; if (salas[0]->getFogo()) cout << " F "; if (salas[0]->getCC()) cout << " CC ";
+	consola.gotoxy(42, 32);
+	if (salas[11]->getBrecha()) cout << "B "; if (salas[0]->getFogo()) cout << " F "; if (salas[0]->getCC()) cout << " CC ";
+	consola.setTextColor(consola.BRANCO);
+}
+
 void Nave::mostraOxigenioSalas(Nave & nave, Consola & consola)
 {
 	consola.setTextColor(consola.CYAN);
@@ -665,8 +701,8 @@ void Nave::mostraOxigenioSalas(Nave & nave, Consola & consola)
 	cout << "O2: " << nave.getO2Sala(4) << "%";
 	consola.gotoxy(30, 22);
 	cout << "O2: " << nave.getO2Sala(5) << "%";
-	consola.gotoxy(42, 20);
-	cout << "Esc: " << nave.getEscudoSalaEscudo(6) << "%";
+	consola.gotoxy(55, 2);
+	cout << "Escudo: " << nave.getEscudoSalaEscudo(6) << "%";
 	consola.gotoxy(42, 22);
 	cout << "O2: " << nave.getO2Sala(6) << "%";
 	consola.gotoxy(54, 22);

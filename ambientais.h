@@ -1,22 +1,30 @@
-#ifndef AMBIENTAIS_H
-#define AMBIENTAIS_H
-
 #include "libraries.h"
 
+class Sala;
 
-class EfeitosAmbientais {
-	
+void AmbientaisInicioTurno(vector<Sala *> salas);
+void AmbientaisFimTurno(vector<Sala *> salas);
 
-protected:
-	
 
-public:
-	EfeitosAmbientais();
-	~EfeitosAmbientais();
 
-	void FimTurno();
-	void InicioTurno();
 
-};
 
-#endif
+#/*ifndef AMBIENTAIS_H
+#define AMBIENTAIS_H*/
+
+//class EfeitosAmbientais {
+//	
+//
+//protected:
+//	
+//
+//public:
+//	EfeitosAmbientais();
+//	~EfeitosAmbientais();
+//
+//	void FimTurno();
+//	void InicioTurno();
+//
+//};
+//
+//#endif

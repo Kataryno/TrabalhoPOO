@@ -6,7 +6,7 @@
 Sala::Sala()
 {
 	saude = integridade = o2 = 100;
-	fogo = brecha = cc = false;
+	fogo = brecha = curtocircuito = false;
 	nome = "Vazia";
 	//operada = false;
 }
@@ -71,6 +71,21 @@ int Sala::getO2() const
 	return o2;
 }
 
+bool Sala::getBrecha() const
+{
+	return brecha;
+}
+
+bool Sala::getFogo() const
+{
+	return fogo;
+}
+
+bool Sala::getCC() const
+{
+	return curtocircuito;
+}
+
 ostream & operator<<(ostream & saida, const Sala & x) {
 	saida << x.getAsString();
 	return saida;
@@ -93,6 +108,11 @@ void Sala::setDiminuiIntegridade(int n)
 void Sala::setAumentaIntegridade(int n)
 {
 	integridade += n;
+	if (integridade >= 100)
+	{
+		integridade = 100;
+		brecha = fogo = curtocircuito = false;
+	}
 }
 
 void Sala::setDiminuiOxigenio(int n)
@@ -113,7 +133,22 @@ void Sala::setAumentaOxigenio(int n)
 void Sala::setBrecha()
 {
 	brecha = true;
+	fogo = false;
 	o2 = 0;
+}
+
+void Sala::setFogo()
+{
+	if (o2 > 0)
+	{
+		fogo = true;
+	}
+}
+
+void Sala::setCC()
+{
+	curtocircuito = true;
+
 }
 
 int Sala::getId() const
@@ -121,7 +156,17 @@ int Sala::getId() const
 	return id;
 }
 
-vector<Unidade*> Sala::getTripulacao()
+vector<Unidade*> Sala::getInimigos() const
+{
+	return ocupantesInimigos;
+}
+
+vector<Unidade*> Sala::getXenomorfos() const
+{
+	return ocupantesXenomorfos;
+}
+
+vector<Unidade*> Sala::getTripulacao() const
 {
 	return ocupantesTripulacao;
 }
