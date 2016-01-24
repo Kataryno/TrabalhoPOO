@@ -16,10 +16,16 @@
 #include "consola.h"
 #include "pirata.h"
 #include "UniXenomorfo.h"
+#include "salabeliche.h"
+#include "salaenfermaria.h"
+#include "salaarmas.h"
+#include "salaraiolaser.h"
+#include "salareparadora.h"
 #include "UniGeigermorfo.h"
 #include "UniCasulo.h"
 #include "UniBlob.h"
 #include "UniMxyzypykwi.h"
+
 
 int Nave::totalTripulantes = 3;
 int Nave::DistanciaPercorrida = 0;
@@ -27,6 +33,7 @@ int Nave::DistanciaPercorrida = 0;
 Nave::Nave()
 {
 	int incremento = 12;
+			
 			salas.push_back(new SalaPropulsor());
 			salas.push_back(nullptr);
 			salas.push_back(nullptr);
@@ -110,13 +117,13 @@ void Nave::criaInimigos()
 	int idSala;
 	//rand()%(max-min + 1) + min;
 	//Preenche o vector de inimigos quando o evento Ataque de inimigos coloca piratas na nave
-	int nInimigos = rand() % (5 - 3 + 1) + 3; //aleatorio entre 3 e 5
+		int nInimigos = rand() % (5 - 3 + 1) + 3; //aleatorio entre 3 e 5
 
-	for (int i = 0; i < nInimigos && inimigos.size() < 26; i++)
-	{
-		idSala = rand() % 11;
-		inimigos.push_back(new Pirata(65 + inimigos.size(), salas[idSala]));
-	}
+		for (int i = 0; i < nInimigos && inimigos.size() < 26; i++)
+		{
+			idSala = rand() % 11;
+			inimigos.push_back(new Pirata(65 + inimigos.size(), salas[idSala]));
+		}
 }
 
 void Nave::criaXenomorfos()
@@ -185,6 +192,16 @@ int Nave::pesquisaSala(string & nome) const {
 		if (nome == salas[i]->getNome())
 			return i;
 	return -1;
+}
+
+void Nave::preencheNaveAuto()
+{
+	alteraNave(new SalaRaioLaser, 2 - 1);
+	alteraNave(new SalaArmas, 3 - 1);
+	alteraNave(new SalaEnfermaria, 4 - 1);
+	alteraNave(new SalaCapitao, 10 - 1);
+	alteraNave(new SalaReparadora, 11 - 1);
+	alteraNave(new SalaEnfermaria, 12 - 1);
 }
 
 string Nave::getNomeSala(int pos) const
@@ -596,6 +613,13 @@ int Nave::getIntegridadeSala(int pos) const
 	return salas[pos]->getIntegridade();
 }
 
+int Nave::getEscudoSalaEscudo(int pos) const
+{
+	return salas[pos]->getEscudo();
+}
+
+
+
 void Nave::mostraIntegridadeSalas(Nave & nave, Consola & consola)
 {
 	consola.setTextColor(consola.CYAN);
@@ -641,6 +665,8 @@ void Nave::mostraOxigenioSalas(Nave & nave, Consola & consola)
 	cout << "O2: " << nave.getO2Sala(4) << "%";
 	consola.gotoxy(30, 22);
 	cout << "O2: " << nave.getO2Sala(5) << "%";
+	consola.gotoxy(42, 20);
+	cout << "Esc: " << nave.getEscudoSalaEscudo(6) << "%";
 	consola.gotoxy(42, 22);
 	cout << "O2: " << nave.getO2Sala(6) << "%";
 	consola.gotoxy(54, 22);
