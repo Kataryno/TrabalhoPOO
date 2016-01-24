@@ -20,3 +20,8 @@ string Tripulacao::getAsString() const
 		oss << getId() << " - " << getNome() << " - PV: " << getHp() << " Sala: " << getSala() + 1;
 	return oss.str();
 }
+
+void Tripulacao::eliminaUnidade()
+{
+	eliminaTripulante();
+}

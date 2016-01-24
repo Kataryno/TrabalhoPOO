@@ -8,6 +8,6 @@
 class RobotTrip : public Tripulacao {
 
 public:
-	RobotTrip(char identificacao);
+	RobotTrip(char identificacao, Nave * n);
 };
 #endif

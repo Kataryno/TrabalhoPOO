@@ -7,8 +7,9 @@
 #include "exoesqueleto.h"
 
 
-UniCasulo::UniCasulo(char identificacao, Sala * sala) : UniXenomorfo(identificacao)
+UniCasulo::UniCasulo(char identificacao, Sala * sala, Nave * n) : UniXenomorfo(identificacao)
 {
+	setNave(n);
 	setNome("Casulo");
 	hp = 6;
 	caracteristicas.push_back(new CaractXenomorfo(0));

@@ -8,7 +8,7 @@
 class UniGeigermorfo : public UniXenomorfo {
 
 public:
-	UniGeigermorfo::UniGeigermorfo(char identificacao, Sala * sala);
+	UniGeigermorfo(char identificacao, Sala * sala, Nave *);
 
 	string getAsString() const;
 

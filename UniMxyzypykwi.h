@@ -8,7 +8,7 @@
 class UniMxyzypykwi : public UniXenomorfo {
 
 public:
-	UniMxyzypykwi(char identificacao, Sala * sala);
+	UniMxyzypykwi(char identificacao, Sala * sala, Nave * n);
 
 	string getAsString() const;
 

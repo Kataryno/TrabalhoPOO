@@ -8,7 +8,7 @@
 class UniBlob : public UniXenomorfo {
 
 public:
-	UniBlob(char identificacao, Sala * sala);
+	UniBlob(char identificacao, Sala * sala, Nave * n);
 
 	string getAsString() const;
 

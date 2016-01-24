@@ -11,6 +11,9 @@ public:
 		
 	string getAsString() const;
 
+	void eliminaUnidade();
+
+
 };
 
 #endif

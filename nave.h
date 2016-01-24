@@ -7,6 +7,7 @@ class Tripulacao;
 class Inimigos;
 class Consola;
 class UniXenomorfo;
+class Unidade;
 
 class Nave {
 	static int totalTripulantes;
@@ -52,6 +53,7 @@ public:
 	bool statusNave();
 	void danificaNave(int sala,int dano);
 	void FimTurno();
+	
 	void InicioTurno();
 
 	//Sala Related
@@ -74,20 +76,25 @@ public:
 	void mostraOcupanteSala(Consola & consola);
 	//void criaTripulacao(const Nave & x);
 	void criaTripulacao();
-	
+	bool eliminaTripulante(Unidade * unidade);
+		
 	//Inimigos Related
 	void criaInimigos();
 	int pesquisaInimigo(char identificacao) const;
 	void mostraOcupanteSalaInimigos(Consola & consola);
+	bool eliminaInimigo(Unidade * unidade);
 
 	//Xenomorfos Related
 	void criaXenomorfos();
+	int pesquisaXenomorfo(char identificacao) const;
 	void mostraOcupanteSalaXenomorfos(Consola & consola);
-
+	bool eliminaXenomorfo(Unidade * unidade);
 
 	//PARA APAGAR
 	void criaBlobs();
 };
+
+
 
 ostream & operator<<(ostream & saida, const Nave & x);
 

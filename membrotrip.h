@@ -8,7 +8,7 @@
 class MembroTrip : public Tripulacao{
 
 public:
-	MembroTrip(char identificacao);
+	MembroTrip(char identificacao, Nave * n);
 	virtual string getAsString() const;
 	
 };

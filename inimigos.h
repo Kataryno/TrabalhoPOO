@@ -13,6 +13,8 @@ public:
 	//Inimigos();
 	Inimigos(char identificacao);
 
+	Inimigos(char identificacao, Nave * n);
+
 	//void setId(char & identificacao);
 	//void setNome(string n);
 	//void setSala(int idSala);
@@ -20,6 +22,8 @@ public:
 	//int getSalaId() const;
 	
 	string getAsString() const;
+
+	void eliminaUnidade();
 
 };
 

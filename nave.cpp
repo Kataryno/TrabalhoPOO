@@ -28,8 +28,6 @@
 #include "UniMxyzypykwi.h"
 #include "ambientais.h"
 
-//TETETTETETETETETETET
-
 int Nave::totalTripulantes = 3;
 int Nave::DistanciaPercorrida = 0;
 
@@ -99,17 +97,17 @@ void Nave::criaTripulacao()
 	{
 		if (AposentoCapitao)
 		{
-			tripulantes.push_back(new CapitaoTrip(65 + i));
+			tripulantes.push_back(new CapitaoTrip(65 + i, this));
 			setAposentoCapitao(false);
 		}
 		else if (OficinaRobot)
 		{
-			tripulantes.push_back(new RobotTrip(65 + i));
+			tripulantes.push_back(new RobotTrip(65 + i, this));
 			setOficinaRobot(false);
 		}
 		else
 		{
-			tripulantes.push_back(new MembroTrip(65 + i));
+			tripulantes.push_back(new MembroTrip(65 + i, this));
 		}
 		//tripulantes[i]->setId = (char)41 + 1;
 	}
@@ -125,7 +123,7 @@ void Nave::criaInimigos()
 		for (int i = 0; i < nInimigos && inimigos.size() < 26; i++)
 		{
 			idSala = rand() % 11;
-			inimigos.push_back(new Pirata(65 + inimigos.size(), salas[idSala]));
+			inimigos.push_back(new Pirata(65 + inimigos.size(), salas[idSala], this));
 		}
 }
 
@@ -139,11 +137,11 @@ void Nave::criaXenomorfos()
 	int tipoXenomorfo = rand() % 2;
 	switch (tipoXenomorfo)
 	{
-	case 0: xenomorfos.push_back(new UniGeigermorfo(65 + xenomorfos.size(), salas[idSala]));
+	case 0: xenomorfos.push_back(new UniGeigermorfo(65 + xenomorfos.size(), salas[idSala], this));
 		break;
-	case 1: xenomorfos.push_back(new UniBlob(65 + xenomorfos.size(), salas[idSala]));
+	case 1: xenomorfos.push_back(new UniBlob(65 + xenomorfos.size(), salas[idSala], this));
 		break;
-	case 2: xenomorfos.push_back(new UniMxyzypykwi(65 + xenomorfos.size(), salas[idSala]));
+	case 2: xenomorfos.push_back(new UniMxyzypykwi(65 + xenomorfos.size(), salas[idSala], this));
 		break;
 	default:
 		break;
@@ -571,7 +569,6 @@ void Nave::InicioTurno()
 
 
 void Nave::FimTurno()
-
 {
 	//1º Efeitos Ambientais
 	AmbientaisInicioTurno(salas);
@@ -581,6 +578,39 @@ void Nave::FimTurno()
 	//5º Acções dos tripulantes
 	for (unsigned int i = 0; i < tripulantes.size(); i++)
 		tripulantes[i]->FimTurno();
+}
+
+bool Nave::eliminaTripulante(Unidade * unidade)
+{
+	int pos = pesquisaTripulante(unidade->getId());
+	if (pos == -1)
+		return false;
+
+	delete tripulantes[pos];
+	tripulantes.erase(tripulantes.begin() + pos);
+	return true;
+}
+
+bool Nave::eliminaInimigo(Unidade * unidade)
+{
+	int pos = pesquisaInimigo(unidade->getId());
+	if (pos == -1)
+		return false;
+
+	delete inimigos[pos];
+	inimigos.erase(inimigos.begin() + pos);
+	return true;
+}
+
+bool Nave::eliminaXenomorfo(Unidade * unidade)
+{
+	int pos = pesquisaXenomorfo(unidade->getId());
+	if (pos == -1)
+		return false;
+
+	delete xenomorfos[pos];
+	xenomorfos.erase(xenomorfos.begin() + pos);
+	return true;
 }
 
 int Nave::pesquisaTripulante(char identificacao) const
@@ -595,6 +625,14 @@ int Nave::pesquisaInimigo(char identificacao) const
 {
 	for (unsigned int i = 0; i < inimigos.size(); i++)
 		if (identificacao == inimigos[i]->getId())
+			return i;
+	return -1;
+}
+
+int Nave::pesquisaXenomorfo(char identificacao) const
+{
+	for (unsigned int i = 0; i < xenomorfos.size(); i++)
+		if (identificacao == xenomorfos[i]->getId())
 			return i;
 	return -1;
 }
@@ -879,6 +917,6 @@ void Nave::removeSalasAdjacentes()
 void Nave::criaBlobs()
 {
 	for (int i = 0; i < 12; i++)
-		xenomorfos.push_back(new UniBlob(65 + xenomorfos.size(), salas[i]));
-	xenomorfos.push_back(new UniGeigermorfo(65 + xenomorfos.size(), salas[6]));
+		xenomorfos.push_back(new UniBlob(65 + xenomorfos.size(), salas[i], this));
+	xenomorfos.push_back(new UniGeigermorfo(65 + xenomorfos.size(), salas[6], this));
 }

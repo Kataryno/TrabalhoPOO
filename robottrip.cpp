@@ -3,8 +3,9 @@
 #include "combatente.h"
 #include "Caracttripulacao.h"
 
-RobotTrip::RobotTrip(char identificacao) : Tripulacao(identificacao)
+RobotTrip::RobotTrip(char identificacao, Nave * n) : Tripulacao(identificacao)
 {
+	setNave(n);
 	setNome("Robot");
 	hp = 8;
 	caracteristicas.push_back(new Exoesqueleto(2));

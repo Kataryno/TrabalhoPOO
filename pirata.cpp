@@ -7,9 +7,9 @@
 #include "mover.h"
 
 
-
-Pirata::Pirata(char identificacao, Sala * sala) : Inimigos(identificacao)
+Pirata::Pirata(char identificacao, Sala * sala, Nave * n) : Inimigos(identificacao)
 {
+	setNave(n);
 	setNome("Pirata");
 	hp = 4;
 	caracteristicas.push_back(new Respira());

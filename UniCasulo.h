@@ -8,7 +8,7 @@
 class UniCasulo : public UniXenomorfo {
 
 public:
-	UniCasulo(char identificacao, Sala * sala);
+	UniCasulo(char identificacao, Sala * sala, Nave * n);
 
 	string getAsString() const;
 

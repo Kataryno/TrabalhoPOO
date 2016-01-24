@@ -10,8 +10,9 @@
 #include "respira.h"
 
 
-UniMxyzypykwi::UniMxyzypykwi(char identificacao, Sala * sala) : UniXenomorfo(identificacao)
+UniMxyzypykwi::UniMxyzypykwi(char identificacao, Sala * sala, Nave * n) : UniXenomorfo(identificacao)
 {
+	setNave(n);
 	setNome("Mxyzypykwi");
 	hp = 8;
 	caracteristicas.push_back(new CaractXenomorfo(0));

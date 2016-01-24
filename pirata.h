@@ -8,7 +8,7 @@
 class Pirata : public Inimigos{
 
 public:
-	Pirata::Pirata(char identificacao, Sala * sala);
+	Pirata(char identificacao, Sala * sala, Nave * n);
 	virtual string getAsString() const;
 	
 };

@@ -6,8 +6,9 @@
 #include "caractoperador.h"
 #include "Caracttripulacao.h"
 
-CapitaoTrip::CapitaoTrip(char identificacao):Tripulacao(identificacao)
+CapitaoTrip::CapitaoTrip(char identificacao, Nave * n) : Tripulacao(identificacao)
 {
+	setNave(n);
 	setNome("Capitao");
 	hp = 6;
 	caracteristicas.push_back(new Respira());

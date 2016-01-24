@@ -11,8 +11,9 @@
 #include "mover.h"
 
 
-UniGeigermorfo::UniGeigermorfo(char identificacao, Sala * sala) : UniXenomorfo(identificacao)
+UniGeigermorfo::UniGeigermorfo(char identificacao, Sala * sala, Nave * n) : UniXenomorfo(identificacao)
 {
+	setNave(n);
 	setNome("Geigermorfo");
 	hp = 4;
 	caracteristicas.push_back(new CaractXenomorfo(3));

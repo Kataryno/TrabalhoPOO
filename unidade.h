@@ -6,11 +6,13 @@
 
 class Sala;
 class Caracteristica;
+class Nave;
 
 class Unidade {
 	char id;
 	string nome;
 	Sala * sala;
+	Nave * nave;
 
 protected:
 	vector <Caracteristica *> caracteristicas;
@@ -27,11 +29,12 @@ public:
 
 	bool getOperador();
 	bool getToxico();
-	
+
 	char getId() const;
 	int getSala() const;
 	int getHp()const;
 
+	void setNave(Nave * n);
 	void setId(char & identificacao);
 	void setSalaTripulacao(Sala * idsala);
 	void setSalaInimigo(Sala * idsala);
@@ -40,6 +43,11 @@ public:
 	void recebeVida(int v);
 	void setNome(string n);
 	string getNome() const;
+
+	virtual void eliminaUnidade();
+	void eliminaTripulante();
+	void eliminaInimigo();
+	void eliminaXenomorfo();
 };
 
 #endif

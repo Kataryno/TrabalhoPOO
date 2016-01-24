@@ -15,8 +15,9 @@
 #include "caractoperador.h"
 
 
-UniBlob::UniBlob(char identificacao, Sala * sala) : UniXenomorfo(identificacao)
+UniBlob::UniBlob(char identificacao, Sala * sala, Nave * n) : UniXenomorfo(identificacao)
 {
+	setNave(n);
 	setNome("Blob");
 	hp = 8;
 	caracteristicas.push_back(new CaractXenomorfo(0));

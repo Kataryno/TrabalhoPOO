@@ -1,9 +1,11 @@
 #include "unidade.h"
 #include "caracteristica.h"
+#include "nave.h"
 
 Unidade::Unidade()
 {
 	sala = nullptr;
+	nave = nullptr;
 }
 
 Unidade::~Unidade()
@@ -24,6 +26,39 @@ char Unidade::getId() const
 void Unidade::levaDano(int d)
 {
 	hp -= d;
+	if (hp == 0)
+		eliminaUnidade();
+}
+
+void Unidade::eliminaUnidade()
+{
+}
+//void Unidade::eliminaUnidade()
+//{
+//	sala->apagaOcupanteTripulacao(this);
+//	sala = nullptr;
+//	nave->eliminaTripulante(this);
+//}
+
+void Unidade::eliminaTripulante()
+{
+	sala->apagaOcupanteTripulacao(this);
+	sala = nullptr;
+	nave->eliminaTripulante(this);
+}
+
+void Unidade::eliminaInimigo()
+{
+	sala->apagaOcupanteInimigo(this);
+	sala = nullptr;
+	nave->eliminaInimigo(this);
+}
+
+void Unidade::eliminaXenomorfo()
+{
+	sala->apagaOcupanteXenomorfo(this);
+	sala = nullptr;
+	nave->eliminaXenomorfo(this);
 }
 
 void Unidade::recebeVida(int v)
@@ -94,7 +129,7 @@ void Unidade::InicioTurno()
 		caracteristicas[i]->InicioTurno(this, sala);
 }
 
-//Percorre o vector das características para verificar se é Operador. Se encontrou essa característica retorna true, senão false.
+//Percorre o vector das características para verificar se tem a característica Operador. Se encontrou essa característica retorna true, senão false.
 bool Unidade::getOperador()
 {
 	for (int i = 0; i < caracteristicas.size(); i++)
@@ -103,11 +138,16 @@ bool Unidade::getOperador()
 	return false;
 }
 
-//Percorre o vector das características para verificar se é Operador. Se encontrou essa característica retorna true, senão false.
+//Percorre o vector das características para verificar se tem a característica Tóxico. Se encontrou essa característica retorna true, senão false.
 bool Unidade::getToxico()
 {
 	for (int i = 0; i < caracteristicas.size(); i++)
 		if (caracteristicas[i]->getNome() == "Toxico")
 			return true;
 	return false;
+}
+
+void Unidade::setNave(Nave * n)
+{
+	nave = n;
 }
