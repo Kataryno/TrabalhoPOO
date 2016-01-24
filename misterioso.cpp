@@ -10,15 +10,17 @@ void Misterioso::FimTurno(Unidade * unidade, Sala * sala)
 {
 	//Falta desenvolver ataque contra hipnotizador ou inimigo
 }
-
- Misterioso::Misterioso(int p) : Caracteristica("Misterioso")
+ 
+Misterioso::Misterioso() : Caracteristica("Misterioso")
+//Misterioso::Misterioso(int p) : Caracteristica("Misterioso")
 {
-	pontos = p;
+	//pontos = p;
 }
 
 string Misterioso::getAsString() const
 {
 	ostringstream oss;
-	oss << "\n   Pontos " << pontos << endl;
+	oss << "\n  Não tem Pontos " << endl;
+	//oss << "\n   Pontos " << pontos << endl;
 	return oss.str();
 }

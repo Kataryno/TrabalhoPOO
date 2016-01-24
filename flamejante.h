@@ -7,10 +7,11 @@
 class Unidade;
 
 class Flamejante : public Caracteristica {
-	int pontos;
+	//int pontos;
 
 public:
-	Flamejante(int p);
+	Flamejante();
+	//Flamejante(int p);
 	virtual string getAsString() const;
 	void InicioTurno(Unidade * unidade, Sala * sala);
 	void FimTurno(Unidade * unidade, Sala * sala);

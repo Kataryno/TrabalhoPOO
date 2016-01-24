@@ -12,7 +12,8 @@ Pirata::Pirata(char identificacao, Sala * sala) : Inimigos(identificacao)
 {
 	setNome("Pirata");
 	hp = 4;
-	caracteristicas.push_back(new Respira(1));
+	caracteristicas.push_back(new Respira());
+	//caracteristicas.push_back(new Respira(1));
 	caracteristicas.push_back(new Caractinimigo(1, 2));
 	caracteristicas.push_back(new Mover(15));
 	setSalaInimigo(sala);

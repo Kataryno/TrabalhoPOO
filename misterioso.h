@@ -7,10 +7,11 @@
 class Unidade;
 
 class Misterioso : public Caracteristica {
-	int pontos;
+	//int pontos;
 
 public:
-	Misterioso(int p);
+	Misterioso();
+	//Misterioso(int p);
 	virtual string getAsString() const;
 	void InicioTurno(Unidade * unidade, Sala * sala);
 	void FimTurno(Unidade * unidade, Sala * sala);

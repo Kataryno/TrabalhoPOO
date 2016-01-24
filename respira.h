@@ -7,10 +7,11 @@
 class Unidade;
 
 class Respira : public Caracteristica {
-	int pontos;
+	//int pontos;
 
 public:
-	Respira(int p);
+	Respira();
+	//Respira(int p);
 	virtual string getAsString() const;
 	void InicioTurno(Unidade * unidade, Sala * sala);
 	void FimTurno(Unidade * unidade, Sala * sala);

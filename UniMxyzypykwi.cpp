@@ -18,7 +18,8 @@ UniMxyzypykwi::UniMxyzypykwi(char identificacao, Sala * sala) : UniXenomorfo(ide
 	caracteristicas.push_back(new Hipnotizador(15));
 	caracteristicas.push_back(new Mover(30));
 	caracteristicas.push_back(new Mutatismutantis(10));
-	caracteristicas.push_back(new Respira(1));
+	caracteristicas.push_back(new Respira());
+	//caracteristicas.push_back(new Respira(1));
 	setSalaXenomorfo(sala);
 }
 

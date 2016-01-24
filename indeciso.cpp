@@ -11,14 +11,16 @@ void Indeciso::FimTurno(Unidade * unidade, Sala * sala)
 	//Falta desenvolver ataque contra hipnotizador ou inimigo
 }
 
- Indeciso::Indeciso(int p) : Caracteristica("Indeciso")
+Indeciso::Indeciso() : Caracteristica("Indeciso")
+//Indeciso::Indeciso(int p) : Caracteristica("Indeciso")
 {
-	pontos = p;
+	//pontos = p;
 }
 
 string Indeciso::getAsString() const
 {
 	ostringstream oss;
-	oss << "\n   Pontos " << pontos << endl;
+	oss << "\n   Não tem Pontos " << endl;
+	//oss << "\n   Pontos " << pontos << endl;
 	return oss.str();
 }
