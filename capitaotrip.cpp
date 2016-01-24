@@ -10,8 +10,8 @@ CapitaoTrip::CapitaoTrip(char identificacao):Tripulacao(identificacao)
 {
 	setNome("Capitao");
 	hp = 6;
+	setMaxHP(hp);
 	caracteristicas.push_back(new Respira());
-	//caracteristicas.push_back(new Respira(1));
 	caracteristicas.push_back(new Exoesqueleto(2));
 	caracteristicas.push_back(new Reparador(1));
 	caracteristicas.push_back(new Combatente(2));

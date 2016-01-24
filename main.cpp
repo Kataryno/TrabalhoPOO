@@ -211,7 +211,7 @@ void main() {
 			break;
 		case 7:	
 			Apollo.preencheNaveAuto();
-			Apollo.criaBlobs();
+			//Apollo.criaBlobs();
 			break;
 		}
 
