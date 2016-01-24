@@ -10,14 +10,13 @@ class Tripulacao;
 class Sala {
 	string nome;
 	int id;
-	bool brecha, fogo, curtocircuito;
+	bool brecha, fogo, curtocircuito, fogoVizinho;
 	vector<Unidade *> ocupantesTripulacao;
 	vector<Unidade *> ocupantesXenomorfos;
 	vector<Unidade *> ocupantesInimigos;
 	vector<Sala *> salasAdjacentes;
 
 protected:
-	int saude;
 	int o2;
 	int integridade;
 	
@@ -35,11 +34,11 @@ public:
 
 	//get Fuctions
 	bool getOperada() const;
-	int getSaude() const;
 	int getIntegridade() const;
 	int getO2()const;
 	bool getBrecha()const;
 	bool getFogo()const;
+	bool getFogoVizinho()const;
 	bool getCC()const;
 	string getNome() const;
 	int getId() const;
@@ -47,6 +46,7 @@ public:
 	vector <Unidade *> getTripulacao()const;
 	vector <Unidade *> getInimigos()const;
 	vector <Unidade *> getXenomorfos()const;
+	vector <Sala *> getSalaAdjacentes()const;
 	//set Functions
 	void setId(int idSala);
 	void setDiminuiIntegridade(int n);
@@ -55,6 +55,7 @@ public:
 	void setAumentaOxigenio(int n);
 	void setBrecha();
 	void setFogo();
+	void setFogoVizinho(bool f);
 	void setCC();
 	//ocupantes Related
 	bool apagaOcupanteTripulacao(Unidade * ocupante);

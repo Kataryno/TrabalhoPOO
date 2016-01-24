@@ -1,5 +1,6 @@
 #include "sala.h"
 #include "salaarmas.h"
+int flg = 0;
 
 SalaArmas::SalaArmas()
 {
@@ -17,11 +18,13 @@ string SalaArmas::getAsString() const
 void SalaArmas::FimTurno(vector<Sala*> salas)
 {
 	//teste de dano
-	int flg = 0;
-	if (flg == 0)
-	{
-		setDiminuiIntegridade(2);
-		flg = 1;
-		setBrecha();
-	}
+	//if (flg == 0)
+	//{
+	//	setDiminuiIntegridade(10);
+	//}
+	///*if (flg == 3)
+	//{
+	//	setBrecha();
+	//}*/
+	//flg++;
 }

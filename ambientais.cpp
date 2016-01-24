@@ -61,6 +61,7 @@ void AmbientaisFimTurno(vector<Sala*> salas)
 	vector<Unidade *> ocupantesTripulacao;
 	vector<Unidade *> ocupantesXenomorfos;
 	vector<Unidade *> ocupantesInimigos;
+	vector<Sala *> salasAdjacentes;
 	int n_ocupantes;
 	for (unsigned int i = 0; i < salas.size(); i++)
 	{
@@ -88,6 +89,29 @@ void AmbientaisFimTurno(vector<Sala*> salas)
 			}
 
 		}
+	}
+	for (unsigned int i = 0; i < salas.size(); i++)
+	{
+		if (salas[i]->getFogo() && !salas[i]->getFogoVizinho())
+		{
+			salasAdjacentes = salas[i]->getSalaAdjacentes();
+			if (rand() % 101 <= 50)
+				salas[i]->setDiminuiIntegridade(10);
+			for (unsigned int j = 0; j < salasAdjacentes.size(); j++)
+			{
+				if (rand() % 101 <= 5)
+				{
+					salasAdjacentes[j]->setFogo();
+					salasAdjacentes[j]->setFogoVizinho(true);
+				}
+			}
+		}
+
+	}
+	//Ciclo de limpeza das flags dos incendios causados pelos vizinhos
+	for (unsigned int i = 0; i < salas.size(); i++)
+	{
+		salas[i]->setFogoVizinho(false);
 	}
 
 
