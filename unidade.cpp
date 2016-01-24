@@ -13,6 +13,11 @@ Unidade::~Unidade()
 	sala = nullptr;
 }
 
+void Unidade::setMaxHP(int p)
+{
+	maxHP = p;
+}
+
 void Unidade::setId(char & identificacao)
 {
 	id = identificacao;
@@ -114,6 +119,11 @@ int Unidade::getSala() const
 int Unidade::getHp() const
 {
 	return hp;
+}
+
+int Unidade::getMaxHP() const
+{
+	return maxHP;
 }
 
 void Unidade::FimTurno()

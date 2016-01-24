@@ -47,7 +47,8 @@ void eventos(Nave & nave, int nturnos)
 		else if (probEvento >= 50 && probEvento < 75)
 			;
 		else;*/
-		eventoChuvaMeteoritos(nave);
+		//eventoChuvaMeteoritos(nave);
+		
 		turnoEvento = nturnos;
 		turnoAleatorio = rand() % (10 - 5 + 1) + 5;
 	}
@@ -243,4 +244,9 @@ void eventoAtaquePirata(Nave & nave)
 		nave.criaInimigos();
 	}
 	
+}
+
+void eventoAtaqueXenomorfo(Nave & nave)
+{
+	nave.criaXenomorfos();
 }

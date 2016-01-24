@@ -18,4 +18,5 @@ string SalaPropulsor::getAsString() const
 
 void SalaPropulsor::FimTurno(vector<Sala*> salas)
 {
+	
 }

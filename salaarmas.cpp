@@ -16,4 +16,12 @@ string SalaArmas::getAsString() const
 
 void SalaArmas::FimTurno(vector<Sala*> salas)
 {
+	//teste de dano
+	int flg = 0;
+	if (flg == 0)
+	{
+		setDiminuiIntegridade(2);
+		flg = 1;
+		setBrecha();
+	}
 }

@@ -12,13 +12,14 @@ class Unidade {
 	char id;
 	string nome;
 	Sala * sala;
+	int maxHP;
 	Nave * nave;
 
 protected:
 	vector <Caracteristica *> caracteristicas;
 	
 	int hp;
-	//bool respira, reparador, combatente, flamenjante, toxico, misterioso, indeciso, regenerador, exoesqueleto, robotico, xenomorfo, casulo, mutandis, hipnotizador, operador, tripulacao, inimigo, move, armado;
+	
 
 public:
 	Unidade();
@@ -29,11 +30,13 @@ public:
 
 	bool getOperador();
 	bool getToxico();
-
+	
 	char getId() const;
 	int getSala() const;
 	int getHp()const;
+	int getMaxHP()const;
 
+	void setMaxHP(int p);
 	void setNave(Nave * n);
 	void setId(char & identificacao);
 	void setSalaTripulacao(Sala * idsala);
