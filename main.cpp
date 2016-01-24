@@ -208,8 +208,10 @@ void main() {
 				break;
 		case 6: ;
 			setNivel(consola);
+			break;
 		case 7:	
 			Apollo.preencheNaveAuto();
+			Apollo.criaBlobs();
 			break;
 		}
 

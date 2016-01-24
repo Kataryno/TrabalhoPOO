@@ -27,6 +27,7 @@ public:
 	void InicioTurno();
 
 	bool getOperador();
+	bool getToxico();
 	
 	char getId() const;
 	int getSala() const;

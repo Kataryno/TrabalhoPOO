@@ -251,10 +251,11 @@ bool Sala::adicionaOcupanteTripulacao(Unidade * ocupante)
 	if (pesquisaOcupanteTripulacao(ocupante->getId()) != -1)
 		return false;
 	
-	Unidade * p = new Unidade(*ocupante);
-	ocupantesTripulacao.push_back(p);
+	ocupantesTripulacao.push_back(ocupante);
 	return true;
 }
+
+
 
 bool Sala::adicionaOcupanteInimigo(Unidade * ocupante)
 {
@@ -264,8 +265,7 @@ bool Sala::adicionaOcupanteInimigo(Unidade * ocupante)
 	if (pesquisaOcupanteInimigo(ocupante->getId()) != -1)
 		return false;
 
-	Unidade * p = new Unidade(*ocupante);
-	ocupantesInimigos.push_back(p);
+	ocupantesInimigos.push_back(ocupante);
 	return true;
 }
 
@@ -277,8 +277,7 @@ bool Sala::adicionaOcupanteXenomorfo(Unidade * ocupante)
 	if (pesquisaOcupanteXenomorfo(ocupante->getId()) != -1)
 		return false;
 
-	Unidade * p = new Unidade(*ocupante);
-	ocupantesXenomorfos.push_back(p);
+	ocupantesXenomorfos.push_back(ocupante);
 	return true;
 }
 
@@ -291,3 +290,36 @@ void Sala::eliminaSalaAdjacente()
 {
 	salasAdjacentes.clear();
 }
+
+void Sala::gasesToxicos(int pontos)
+{
+	//Percorre o vector da tripulação
+	for (int i = 0; i < ocupantesTripulacao.size(); i++)
+		if (!ocupantesTripulacao[i]->getToxico())
+			ocupantesTripulacao[i]->levaDano(pontos);
+
+	//Percorre o vector de inimigos
+	for (int i = 0; i < ocupantesInimigos.size(); i++)
+		if (!ocupantesInimigos[i]->getToxico())
+			ocupantesInimigos[i]->levaDano(pontos);
+
+	//Percorre o vector de xenomorfos
+	for (int i = 0; i < ocupantesXenomorfos.size(); i++)
+		if (!ocupantesXenomorfos[i]->getToxico())
+			ocupantesXenomorfos[i]->levaDano(pontos);
+}
+
+//Para apagar. A função fazia uma cópia do tripulante em vez de ficar a apontar para a lista
+
+//bool Sala::adicionaOcupanteTripulacao(Unidade * ocupante)
+//{
+//	if (ocupante == nullptr)
+//		return false;
+//
+//	if (pesquisaOcupanteTripulacao(ocupante->getId()) != -1)
+//		return false;
+//
+//	Unidade * p = new Unidade(*ocupante);
+//	ocupantesTripulacao.push_back(p);
+//	return true;
+//}

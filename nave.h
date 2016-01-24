@@ -62,6 +62,7 @@ public:
 	int pesquisaSala(string & nome) const;
 	void preencheSalasAdjacentes();
 	void removeSalasAdjacentes();
+	
 	void mostraOxigenioSalas(Nave & nave, Consola & consola);
 	void mostraIntegridadeSalas(Nave & nave, Consola & consola);
 	void mostraEfeitosAmbientaisSalas(Nave & nave, Consola & consola);
@@ -82,6 +83,10 @@ public:
 	//Xenomorfos Related
 	void criaXenomorfos();
 	void mostraOcupanteSalaXenomorfos(Consola & consola);
+
+
+	//PARA APAGAR
+	void criaBlobs();
 };
 
 ostream & operator<<(ostream & saida, const Nave & x);
