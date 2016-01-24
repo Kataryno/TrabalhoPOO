@@ -26,6 +26,7 @@
 #include "UniBlob.h"
 #include "UniMxyzypykwi.h"
 
+//TETETTETETETETETETET
 
 int Nave::totalTripulantes = 3;
 int Nave::DistanciaPercorrida = 0;
