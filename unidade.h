@@ -29,8 +29,12 @@ public:
 	void FimTurno();
 	void InicioTurno();
 
-	bool getOperador();
-	bool getToxico();
+	bool getOperador() const;
+	bool getToxico() const;
+
+	int getExoesqueleto() const;
+
+	void setExoesqueleto(int pontos);
 	
 	char getId() const;
 	bool getOculta() const;
@@ -48,7 +52,7 @@ public:
 	void setSala(Sala * s);
 	void setNave(Nave * n);
 	Nave * getNave() const;
-	vector<Sala*> getSalasNave();
+	vector<Sala*> getSalasNave() const;
 	void setId(char & identificacao);
 
 	virtual void setSalaUnidade(Sala * idsala);

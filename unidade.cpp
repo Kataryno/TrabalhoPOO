@@ -59,10 +59,33 @@ void Unidade::setOculta(bool o)
 
 void Unidade::levaDano(int d)
 {
-	hp -= d;
-	if (hp == 0)
+
+	if (getExoesqueleto() > 0)
+	{
+		int resto = d - getExoesqueleto();
+		if (resto > 0)
+		{
+			hp -= resto;
+			setExoesqueleto(0);
+		}
+		else
+			setExoesqueleto(abs(resto));
+	}
+	else
+		hp -= d;
+
+	if (hp <= 0)
 		eliminaUnidade();
 }
+
+
+//void Unidade::levaDano(int d)
+//{
+//	hp -= d;
+//	if (hp == 0)
+//		eliminaUnidade();
+//}
+
 
 void Unidade::eliminaUnidade()
 {
@@ -183,7 +206,7 @@ void Unidade::InicioTurno()
 }
 
 //Percorre o vector das características para verificar se tem a característica Operador. Se encontrou essa característica retorna true, senão false.
-bool Unidade::getOperador()
+bool Unidade::getOperador() const
 {
 	for (int i = 0; i < caracteristicas.size(); i++)
 		if (caracteristicas[i]->getNome() == "Operador")
@@ -192,12 +215,28 @@ bool Unidade::getOperador()
 }
 
 //Percorre o vector das características para verificar se tem a característica Tóxico. Se encontrou essa característica retorna true, senão false.
-bool Unidade::getToxico()
+bool Unidade::getToxico() const
 {
 	for (int i = 0; i < caracteristicas.size(); i++)
 		if (caracteristicas[i]->getNome() == "Toxico")
 			return true;
 	return false;
+}
+
+//Percorre o vector das características para verificar se tem a característica Tóxico. Se encontrou essa característica retorna true, senão false.
+int Unidade::getExoesqueleto() const
+{
+	for (int i = 0; i < caracteristicas.size(); i++)
+		if (caracteristicas[i]->getNome() == "Exoesqueleto")
+			return caracteristicas[i]->getPontos();
+	return 0;
+}
+
+void Unidade::setExoesqueleto(int pontos)
+{
+	for (int i = 0; i < caracteristicas.size(); i++)
+		if (caracteristicas[i]->getNome() == "Exoesqueleto")
+			caracteristicas[i]->setPontos(pontos);
 }
 
 void Unidade::setSala(Sala * s)
@@ -215,7 +254,7 @@ Nave * Unidade::getNave() const
 	return nave;
 }
 
-vector<Sala*> Unidade::getSalasNave()
+vector<Sala*> Unidade::getSalasNave() const
 {
 	return nave->getVectorSalas();
 }

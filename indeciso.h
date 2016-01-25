@@ -5,9 +5,11 @@
 #include "caracteristica.h"
 
 class Unidade;
+class Nave;
 
 class Indeciso : public Caracteristica {
-	//int pontos;
+	int salaAnterior;
+	int salaActual;
 
 public:
 	Indeciso();

@@ -963,10 +963,10 @@ void Nave::removeSalasAdjacentes()
 
 
 //PARA APAGAR
-///Função para criar Blobs para teste de gases tóxicos
-void Nave::criaBlobs()
-{
-	for (int i = 0; i < 11; i++)
-		xenomorfos.push_back(new UniMxyzypykwi(65 + xenomorfos.size(), salas[i], this));
-	//xenomorfos.push_back(new UniGeigermorfo(65 + xenomorfos.size(), salas[6], this));
-}
+//Função para criar Blobs para teste de gases tóxicos
+//void Nave::criaBlobs()
+//{
+//	for (int i = 0; i < 11; i++)
+//		xenomorfos.push_back(new UniMxyzypykwi(65 + xenomorfos.size(), salas[i], this));
+//	//xenomorfos.push_back(new UniGeigermorfo(65 + xenomorfos.size(), salas[6], this));
+//}
