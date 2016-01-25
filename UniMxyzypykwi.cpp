@@ -15,12 +15,12 @@ UniMxyzypykwi::UniMxyzypykwi(char identificacao, Sala * sala, Nave * n) : UniXen
 	setNave(n);
 	setNome("Mxyzypykwi");
 	hp = 8;
+	setMaxHP(hp);
 	caracteristicas.push_back(new CaractXenomorfo(0));
 	caracteristicas.push_back(new Hipnotizador(15));
 	caracteristicas.push_back(new Mover(30));
 	caracteristicas.push_back(new Mutatismutantis(10));
 	caracteristicas.push_back(new Respira());
-	//caracteristicas.push_back(new Respira(1));
 	setSalaXenomorfo(sala);
 }
 

@@ -38,21 +38,23 @@ bool Sala::getOperada() const
 	//Verifica se a integridade está a 100%, se está alguém da tripulação na sala e se não está nenhum inimigo ou xenomorfo na sala.
 	//Basta que uma destas condições não se verifique para que a sala não esteja a ser operada.
 	
-	if (integridade == 100 && ocupantesTripulacao.size() != 0 && (ocupantesXenomorfos.size() == 0 || ocupantesInimigos.size() == 0))
+	if (integridade == 100 && ocupantesTripulacao.size() != 0 && (ocupantesXenomorfos.size() == 0 && ocupantesInimigos.size() == 0))
+	{	
 		//Verifica se há alguém da triplução com a característica de Operador
 		for (int i = 0; i < ocupantesTripulacao.size(); i++)
 			if (operada = ocupantesTripulacao[i]->getOperador())
 				break;
 
-	//Contudo, existe uma excepção que é no caso de a sala estar a 100% e ter um xenomorfo do tipo blob. O blob tem a característica de operador.
-	//Não pode existir tripulação nem inimigos na sala, senão estão em combate uns com os outros
-
-	else if (integridade == 100 && ocupantesXenomorfos.size() != 0 && (ocupantesTripulacao.size() == 0 || ocupantesInimigos.size() == 0))
+		//Contudo, existe uma excepção que é no caso de a sala estar a 100% e ter um xenomorfo do tipo blob. O blob tem a característica de operador.
+		//Não pode existir tripulação nem inimigos na sala, senão estão em combate uns com os outros
+	}
+	else if (integridade == 100 && ocupantesXenomorfos.size() != 0 && (ocupantesTripulacao.size() == 0 && ocupantesInimigos.size() == 0))
+	{
 		//Verifica se há algum xenomorfo com a característica de Operador
 		for (int i = 0; i < ocupantesXenomorfos.size(); i++)
 			if (operada = ocupantesXenomorfos[i]->getOperador())
 				break;
-
+	}
 	return operada;
 }
 

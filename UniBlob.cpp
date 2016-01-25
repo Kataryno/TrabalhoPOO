@@ -20,10 +20,10 @@ UniBlob::UniBlob(char identificacao, Sala * sala, Nave * n) : UniXenomorfo(ident
 	setNave(n);
 	setNome("Blob");
 	hp = 8;
+	setMaxHP(hp);
 	caracteristicas.push_back(new CaractXenomorfo(0));
 	caracteristicas.push_back(new Regenerador(2));
 	caracteristicas.push_back(new Flamejante());
-	//caracteristicas.push_back(new Flamejante(5));
 	caracteristicas.push_back(new Toxico(1));
 	caracteristicas.push_back(new Reparador(6));
 	caracteristicas.push_back(new Operador());

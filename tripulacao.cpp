@@ -4,7 +4,7 @@
 #include "membrotrip.h"
 #include "capitaotrip.h"
 #include "robottrip.h"
-
+#include "sala.h"
 
 Tripulacao::Tripulacao(char identificacao)
 {
@@ -24,4 +24,9 @@ string Tripulacao::getAsString() const
 void Tripulacao::eliminaUnidade()
 {
 	eliminaTripulante();
+}
+
+void Tripulacao::setSalaUnidade(Sala * idsala)
+{
+	setSalaTripulacao(idsala);
 }

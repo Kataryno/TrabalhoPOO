@@ -13,6 +13,7 @@ public:
 
 	void eliminaUnidade();
 
+	void setSalaUnidade(Sala * idsala);
 
 };
 
