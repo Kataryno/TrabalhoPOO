@@ -287,7 +287,7 @@ char Nave::getIdTripulante(int & pos) const
 string Nave::mostraTripulantes(Consola & consola) const
 {
 	ostringstream oss;
-	
+	consola.setTextColor(consola.VERDE_CLARO);
 	for (unsigned int i = 0; i < tripulantes.size(); i++)
 	{
 		if (tripulantes[i] != nullptr)
@@ -298,6 +298,7 @@ string Nave::mostraTripulantes(Consola & consola) const
 		else
 			oss << "Vazio" << endl;
 	}
+	consola.setTextColor(consola.BRANCO);
 	return oss.str();
 }
 
