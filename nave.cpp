@@ -391,7 +391,7 @@ void Nave::mostraOcupanteSalaInimigos(Consola & consola)
 {
 	ostringstream oss0, oss1, oss2, oss3, oss4, oss5, oss6, oss7, oss8, oss9, oss10, oss11;
 
-	consola.setTextColor(consola.COR_DE_ROSA);
+	consola.setTextColor(consola.VERMELHO);
 
 	for (unsigned int j = 0; j < inimigos.size(); j++)
 	{
