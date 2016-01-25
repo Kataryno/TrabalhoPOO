@@ -39,7 +39,7 @@ void eventos(Nave & nave, int nturnos)
 	if (turnoEvento + turnoAleatorio <= nturnos || nturnos == 1)
 	{
 		srand((unsigned)time(NULL));
-		int probEvento = rand() % 100 + 1;
+		/*int probEvento = rand() % 100 + 1;
 		if (probEvento < 25)
 			eventoPoCosmico(nave);
 		else if (probEvento >= 25 && probEvento < 50)
@@ -47,7 +47,7 @@ void eventos(Nave & nave, int nturnos)
 		else if (probEvento >= 50 && probEvento < 75)
 			eventoAtaqueXenomorfo(nave);
 		else
-		eventoChuvaMeteoritos(nave);
+		eventoChuvaMeteoritos(nave);*/
 		
 		turnoEvento = nturnos;
 		turnoAleatorio = rand() % (10 - 5 + 1) + 5;

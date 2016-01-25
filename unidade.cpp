@@ -1,6 +1,8 @@
 #include "unidade.h"
 #include "caracteristica.h"
+#include "armado.h"
 #include "nave.h"
+#include <algorithm>
 
 Unidade::Unidade()
 {
@@ -11,6 +13,16 @@ Unidade::Unidade()
 Unidade::~Unidade()
 {
 	sala = nullptr;
+}
+
+void Unidade::setCaracteriscaArmado()
+{
+	for (unsigned int i=0; i<caracteristicas.size(); i++)
+	{
+		 if(caracteristicas.back()->getNome() != "Armado")
+			 caracteristicas.push_back(new Armado(1));
+	}
+	
 }
 
 void Unidade::setMaxHP(int p)
@@ -126,9 +138,15 @@ int Unidade::getMaxHP() const
 	return maxHP;
 }
 
+
+vector<Caracteristica*> Unidade::getCaracteristicas() const
+{
+	return caracteristicas;
+}
+
 void Unidade::FimTurno()
 {
-	if (sala->getIntegridade() > 0 && sala->getIntegridade() < 100)
+	if (sala->getIntegridade() > 0 && sala->getIntegridade() <= 100)
 		for (unsigned int i = 0; i < caracteristicas.size(); i++)
 			caracteristicas[i]->FimTurno(this, sala);
 }

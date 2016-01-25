@@ -56,6 +56,14 @@ bool Sala::getOperada() const
 	return operada;
 }
 
+bool Sala::getCombate() const
+{
+	if (ocupantesTripulacao.empty() && (ocupantesInimigos.empty() || ocupantesXenomorfos.empty()) || (ocupantesInimigos.empty() && ocupantesXenomorfos.empty()) || (ocupantesTripulacao.empty() && ocupantesXenomorfos.empty()))
+		return false;
+	else
+		return true;
+}
+
 int Sala::getIntegridade() const
 {
 	return integridade;

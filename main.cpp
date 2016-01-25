@@ -445,7 +445,7 @@ void opcaoConfigurarNave(Nave & nave, Consola & consola)
 	nave.preencheSalasAdjacentes();
 
 	//Para testes. Apagar depois
-	//nave.criaInimigos();
+	nave.criaInimigos();
 	//nave.criaXenomorfos();
 }
 
@@ -537,9 +537,9 @@ void TratamentoComandos(Nave & nave, Consola & consola, bool & jogoActivo)
 
 		if (jogoActivo)
 		{
-			consola.gotoxy(18, 40);
+			consola.gotoxy(40, 40);
 			cout << "Distancia percorrida: " << nave.getDistanciaPercorrida();
-			consola.gotoxy(18, 42);
+			consola.gotoxy(40, 42);
 			cout << "TURNO: " << n_turnos << endl;
 			nave.mostraIntegridadeSalas(nave, consola);
 			nave.mostraOxigenioSalas(nave, consola);
@@ -548,8 +548,10 @@ void TratamentoComandos(Nave & nave, Consola & consola, bool & jogoActivo)
 
 		//consola.gotoxy(1, 45);
 		nave.mostraTripulantes(consola);
+		nave.mostraInimigos(consola);
+		nave.mostraXenomorfos(consola);
 		//cout << nave.mostraTripulantes(consola) << endl;
-		consola.gotoxy(1, 57);
+		consola.gotoxy(2, 57);
 		cout << "Comando > ";
 
 		//cin.ignore(1000,'\n'); //limpa o buffer

@@ -1,5 +1,8 @@
 #include "sala.h"
+#include "unidade.h"
 #include "salaarmas.h"
+#include "caracteristica.h"
+#include "armado.h"
 int flg = 0;
 
 SalaArmas::SalaArmas()
@@ -27,4 +30,10 @@ void SalaArmas::FimTurno(vector<Sala*> salas)
 	//	setBrecha();
 	//}*/
 	//flg++;
+	vector<Unidade *> ocupantesTripulacao = getTripulacao();
+	for (unsigned int i = 0; i < ocupantesTripulacao.size(); i++)
+	{
+		ocupantesTripulacao[i]->setCaracteriscaArmado();
+	}
+
 }

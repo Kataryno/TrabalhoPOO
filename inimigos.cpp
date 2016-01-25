@@ -18,7 +18,7 @@ Inimigos::Inimigos(char identificacao, Nave * n)
 string Inimigos::getAsString() const
 {
 	ostringstream oss;
-	oss << getId() << "-" << getNome() << "-" << getSala();
+	oss << getId() << "-" << getNome() << " - PV: " << getHp();// << "-" << getSala();
 	return oss.str();
 }
 

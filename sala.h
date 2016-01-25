@@ -34,6 +34,7 @@ public:
 
 	//get Fuctions
 	bool getOperada() const;
+	bool getCombate()const;
 	int getIntegridade() const;
 	int getO2()const;
 	bool getBrecha()const;

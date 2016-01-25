@@ -3,7 +3,7 @@
 
 void Reparador::FimTurno(Unidade * unidade, Sala * sala)
 {
-	if (sala->getNome() != "Propulsor")
+	if (sala->getNome() != "Propulsor" && sala->getCombate() != true)
 		sala->setAumentaIntegridade(pontos);
 }
 

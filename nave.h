@@ -83,6 +83,8 @@ public:
 	int pesquisaInimigo(char identificacao) const;
 	void mostraOcupanteSalaInimigos(Consola & consola);
 	bool eliminaInimigo(Unidade * unidade);
+	string mostraInimigos(Consola & consola) const;
+	string mostraXenomorfos(Consola & consola) const;
 
 	//Xenomorfos Related
 	void criaXenomorfos();

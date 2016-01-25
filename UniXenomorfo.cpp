@@ -17,7 +17,7 @@ UniXenomorfo::UniXenomorfo(char identificacao, Nave * n)
 string UniXenomorfo::getAsString() const
 {
 	ostringstream oss;
-	oss << getId() << "-" << getNome() << "-" << getSala();
+	oss << getId() << "-" << getNome() << "-" << "PV: " << getHp();// << getSala();
 	return oss.str();
 }
 

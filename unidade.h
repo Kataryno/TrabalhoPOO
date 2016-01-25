@@ -35,7 +35,10 @@ public:
 	int getSala() const;
 	int getHp()const;
 	int getMaxHP()const;
+	
+	vector <Caracteristica *> getCaracteristicas()const;
 
+	void setCaracteriscaArmado();
 	void setMaxHP(int p);
 	void setNave(Nave * n);
 	void setId(char & identificacao);

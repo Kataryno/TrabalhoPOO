@@ -1,5 +1,8 @@
 #include "combatente.h"
+#include "unidade.h"
+#include "caracteristica.h"
 #include "sala.h"
+#include <time.h>
 
 void Combatente::InicioTurno(Unidade * unidade, Sala * sala)
 {
@@ -8,7 +11,41 @@ void Combatente::InicioTurno(Unidade * unidade, Sala * sala)
 
 void Combatente::FimTurno(Unidade * unidade, Sala * sala)
 {
-	//Falta desenvolver ataque contra xenomorfo ou inimigo
+	srand((unsigned)time(NULL));
+	int extraDano = 0;
+	vector<Unidade *> ocupantesXenomorfos = sala->getXenomorfos();
+	vector<Unidade *> ocupantesInimigos = sala->getInimigos();
+	if (sala->getCombate())
+	{
+		int op = rand() % 2;
+		if (op && ocupantesXenomorfos.size()!=0)
+		{
+			
+			int i = rand() % (ocupantesXenomorfos.size());
+			vector<Caracteristica *> caracteristicas = unidade->getCaracteristicas();
+			for (unsigned int j=0; j < caracteristicas.size(); j++)
+			{
+				if (caracteristicas[j]->getNome() == "Armado")
+				{
+					extraDano = 1;
+				}
+			}
+			ocupantesXenomorfos[i]->levaDano(pontos+extraDano);
+		}
+		else
+		{
+			int i = rand() % (ocupantesInimigos.size());
+			vector<Caracteristica *> caracteristicas = unidade->getCaracteristicas();
+			for (unsigned int j=0; j < caracteristicas.size(); j++)
+			{
+				if (caracteristicas[j]->getNome() == "Armado")
+				{
+					extraDano = 1;
+				}
+			}
+			ocupantesInimigos[i]->levaDano(pontos + extraDano);
+		}
+	}
 }
 
  Combatente::Combatente(int p) : Caracteristica("Combatente")
