@@ -43,8 +43,11 @@ public:
 	vector <Caracteristica *> getCaracteristicas()const;
 
 	void setCaracteriscaArmado();
+	void setCaracteristicaIndeciso();
 	void setMaxHP(int p);
+	void setSala(Sala * s);
 	void setNave(Nave * n);
+	Nave * getNave() const;
 	vector<Sala*> getSalasNave();
 	void setId(char & identificacao);
 
@@ -62,6 +65,8 @@ public:
 	void eliminaTripulante();
 	void eliminaInimigo();
 	void eliminaXenomorfo();
+
+	//virtual Unidade * duplica() const { return new Unidade (*this); }
 };
 
 #endif

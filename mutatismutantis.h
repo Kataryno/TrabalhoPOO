@@ -3,8 +3,11 @@
 
 #include "libraries.h"
 #include "caracteristica.h"
+#include "sala.h"
 
 class Unidade;
+class Sala;
+class nave;
 
 class Mutatismutantis : public Caracteristica {
 	int pontos;

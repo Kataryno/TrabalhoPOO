@@ -32,7 +32,7 @@ void Combatente::FimTurno(Unidade * unidade, Sala * sala)
 			}
 			ocupantesXenomorfos[i]->levaDano(pontos+extraDano);
 		}
-		else
+		else if (ocupantesInimigos.size() != 0)
 		{
 			int i = rand() % (ocupantesInimigos.size());
 			vector<Caracteristica *> caracteristicas = unidade->getCaracteristicas();

@@ -9,5 +9,7 @@ class RobotTrip : public Tripulacao {
 
 public:
 	RobotTrip(char identificacao, Nave * n);
+
+	//Unidade * duplica() const { return new RobotTrip(*this); }
 };
 #endif

@@ -7,7 +7,7 @@
 class Unidade;
 
 class Indeciso : public Caracteristica {
-	int pontos;
+	//int pontos;
 
 public:
 	Indeciso();

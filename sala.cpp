@@ -2,6 +2,8 @@
 #include "unidade.h"
 #include "tripulacao.h"
 #include "salaescudo.h"
+#include "salaarmas.h"
+#include "salapropulsor.h"
 
 Sala::Sala()
 {
@@ -340,17 +342,56 @@ void Sala::gasesToxicos(int pontos)
 			aux[i]->levaDano(pontos);
 }
 
-//Para apagar. A função fazia uma cópia do tripulante em vez de ficar a apontar para a lista
-
-//bool Sala::adicionaOcupanteTripulacao(Unidade * ocupante)
+//Sala::Sala(const Sala& x)
 //{
-//	if (ocupante == nullptr)
-//		return false;
+//	*this = x;
+//	//ocupantesTripulacao = x.ocupantesTripulacao;
+//	//ocupantesXenomorfos = x.ocupantesXenomorfos;
+//	//ocupantesInimigos = x.ocupantesInimigos;
+//	//salasAdjacentes = x.salasAdjacentes;
 //
-//	if (pesquisaOcupanteTripulacao(ocupante->getId()) != -1)
-//		return false;
-//
-//	Unidade * p = new Unidade(*ocupante);
-//	ocupantesTripulacao.push_back(p);
-//	return true;
+//	//integridade = o2 = 100;
+//	//fogo = brecha = curtocircuito = fogoVizinho = false;
+//	//nome = "Vazia";
 //}
+
+//Sala & Sala::operator=(const Sala& x)
+//{
+//	// prevencao da auto-atribuicao
+//	if (this == &x) {
+//		return *this;
+//	}
+//	// libertar mem. din. velha
+//	for (int i = 0; i < ocupantesTripulacao.size(); i++)
+//		delete ocupantesTripulacao[i];
+//	//for (int i = 0; i < ocupantesXenomorfos.size(); i++)
+//	//	delete ocupantesXenomorfos[i];
+//	//for (int i = 0; i < ocupantesInimigos.size(); i++)
+//	//	delete ocupantesInimigos[i];
+//	//for (int i = 0; i < salasAdjacentes.size(); i++)
+//	//	delete salasAdjacentes[i];
+//	
+//	//esvaziar o vector
+//	ocupantesTripulacao.clear();
+//	for (int i = 0; i < x.ocupantesTripulacao.size(); i++) {
+//		//Unidade * p = x.ocupantesTripulacao[i];
+//		ocupantesTripulacao.push_back(x.ocupantesTripulacao[i]->duplica());
+//	}
+//	//ocupantesXenomorfos.clear();
+//	//for (int i = 0; i < x.ocupantesXenomorfos.size(); i++) {
+//	//	Unidade * p = x.ocupantesXenomorfos[i];
+//	//	ocupantesXenomorfos.push_back(new Unidade(*p));
+//	//}
+//	//ocupantesInimigos.clear();
+//	//for (int i = 0; i < x.ocupantesInimigos.size(); i++) {
+//	//	Unidade * p = x.ocupantesInimigos[i];
+//	//	ocupantesInimigos.push_back(new Unidade(*p));
+//	//}
+//	//ocupantesTripulacao.clear();
+//	//for (int i = 0; i < x.salasAdjacentes.size(); i++) {
+//	//	Sala * p = x.salasAdjacentes[i];
+//	//	salasAdjacentes.push_back(new Sala(*p));
+//	//}
+//	return *this;
+//}
+

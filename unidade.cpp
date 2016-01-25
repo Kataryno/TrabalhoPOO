@@ -2,7 +2,7 @@
 #include "caracteristica.h"
 #include "armado.h"
 #include "nave.h"
-//#include "sala.h"
+#include "indeciso.h"
 #include <algorithm>
 
 Unidade::Unidade()
@@ -25,6 +25,11 @@ void Unidade::setCaracteriscaArmado()
 			 caracteristicas.push_back(new Armado(1));
 	}
 	
+}
+
+void Unidade::setCaracteristicaIndeciso()
+{
+	caracteristicas.push_back(new Indeciso());
 }
 
 void Unidade::setMaxHP(int p)
@@ -195,9 +200,19 @@ bool Unidade::getToxico()
 	return false;
 }
 
+void Unidade::setSala(Sala * s)
+{
+	sala = s;
+}
+
 void Unidade::setNave(Nave * n)
 {
 	nave = n;
+}
+
+Nave * Unidade::getNave() const
+{
+	return nave;
 }
 
 vector<Sala*> Unidade::getSalasNave()
