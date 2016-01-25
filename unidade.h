@@ -29,8 +29,12 @@ public:
 	void FimTurno();
 	void InicioTurno();
 
-	bool getOperador();
-	bool getToxico();
+	bool getOperador() const;
+	bool getToxico() const;
+
+	int getExoesqueleto() const;
+
+	void setExoesqueleto(int pontos);
 	
 	char getId() const;
 	bool getOculta() const;
@@ -43,9 +47,12 @@ public:
 	vector <Caracteristica *> getCaracteristicas()const;
 
 	void setCaracteriscaArmado();
+	void setCaracteristicaIndeciso();
 	void setMaxHP(int p);
+	void setSala(Sala * s);
 	void setNave(Nave * n);
-	vector<Sala*> getSalasNave();
+	Nave * getNave() const;
+	vector<Sala*> getSalasNave() const;
 	void setId(char & identificacao);
 
 	virtual void setSalaUnidade(Sala * idsala);
@@ -62,6 +69,8 @@ public:
 	void eliminaTripulante();
 	void eliminaInimigo();
 	void eliminaXenomorfo();
+
+	//virtual Unidade * duplica() const { return new Unidade (*this); }
 };
 
 #endif

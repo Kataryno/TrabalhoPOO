@@ -16,3 +16,13 @@ string Caracteristica::getNome() const
 {
 	return nome;
 }
+
+int Caracteristica::getPontos() const
+{
+	return 0;
+}
+
+void Caracteristica::setPontos(int p)
+{
+
+}

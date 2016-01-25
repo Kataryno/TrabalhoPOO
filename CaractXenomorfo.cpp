@@ -1,5 +1,7 @@
 #include "CaractXenomorfo.h"
 #include "sala.h"
+#include "unidade.h"
+#include <time.h>
 
 void CaractXenomorfo::InicioTurno(Unidade * unidade, Sala * sala)
 {
@@ -8,7 +10,34 @@ void CaractXenomorfo::InicioTurno(Unidade * unidade, Sala * sala)
 
 void CaractXenomorfo::FimTurno(Unidade * unidade, Sala * sala)
 {
-	//Falta desenvolver ataque contra CaractXenomorfo ou inimigo
+	srand((unsigned)time(NULL));
+	vector<Unidade *> ocupantesInimigos = sala->getInimigos();
+	vector<Unidade *> ocupantesTripulacao = sala->getTripulacao();
+
+	if (!ocupantesTripulacao.empty() && !ocupantesInimigos.empty())
+	{
+		int op = rand() % 2;
+		if (op)
+		{
+			int idOcupante = rand() % (ocupantesTripulacao.size());
+			ocupantesTripulacao[idOcupante]->levaDano(pontos);
+		}
+		else
+		{
+			int idOcupante = rand() % (ocupantesInimigos.size());
+			ocupantesInimigos[idOcupante]->levaDano(pontos);
+		}
+	}
+	else if (!ocupantesTripulacao.empty())
+	{
+		int idOcupante = rand() % (ocupantesTripulacao.size());
+		ocupantesTripulacao[idOcupante]->levaDano(pontos);
+	}
+	else if (!ocupantesInimigos.empty())
+	{
+		int idOcupante = rand() % (ocupantesInimigos.size());
+		ocupantesInimigos[idOcupante]->levaDano(pontos);
+	}
 }
 
  CaractXenomorfo::CaractXenomorfo(int p) : Caracteristica("CaractXenomorfo")

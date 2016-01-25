@@ -27,10 +27,17 @@ protected:
 	}
 public:
 	Sala();
+	//Sala(const Sala& x);
+
 	~Sala();
+	
 	virtual string getAsString()const;
-	virtual void FimTurno(vector <Sala *> salas) = 0;
-	virtual int setDiminuiEscudo(int dano) = 0;
+	virtual void FimTurno(vector <Sala *> salas) {}
+	//virtual void FimTurno(vector <Sala *> salas) = 0;
+	virtual int setDiminuiEscudo(int dano) { return 0; }
+	//virtual int setDiminuiEscudo(int dano) = 0;
+	virtual int getEscudo()const { return 0; }
+	//virtual int getEscudo()const = 0;
 
 	//get Fuctions
 	bool getOperada() const;
@@ -43,7 +50,7 @@ public:
 	bool getCC()const;
 	string getNome() const;
 	int getId() const;
-	virtual int getEscudo()const = 0;
+	
 	vector <Unidade *> getTripulacao()const;
 	vector <Unidade *> getInimigos()const;
 	vector <Unidade *> getXenomorfos()const;
@@ -72,8 +79,11 @@ public:
 	int pesquisaOcupanteXenomorfo(char identificacao);
 	void gasesToxicos(int pontos);
 
+	//Sala & operator=(const Sala& x);
+
 };
 
 ostream & operator<<(ostream & saida, const Sala & x);
+
 
 #endif

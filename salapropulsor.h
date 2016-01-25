@@ -4,6 +4,8 @@
 #include "libraries.h"
 #include "sala.h"
 
+class Sala;
+
 class SalaPropulsor : public Sala {
 	int propulsao;
 

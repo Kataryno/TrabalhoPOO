@@ -14,7 +14,7 @@ void Misterioso::FimTurno(Unidade * unidade, Sala * sala)
 		vector<Sala *> s;
 		s = unidade->getSalasNave();
 		unidade->setOculta(false);
-		int idSala = rand() % 11;
+		int idSala = rand() % 12;
 		unidade->setSalaUnidade(s[idSala]);
 	}
 	else

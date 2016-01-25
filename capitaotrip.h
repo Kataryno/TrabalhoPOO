@@ -8,5 +8,7 @@ class CapitaoTrip : public Tripulacao{
 
 public:
 	CapitaoTrip(char identificacao, Nave * n);
+
+	//Unidade * duplica() const { return new CapitaoTrip(*this); }
 };
 #endif

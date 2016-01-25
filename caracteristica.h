@@ -14,6 +14,8 @@ public:
 	string getNome() const;
 	virtual void InicioTurno(Unidade * unidade, Sala * sala) = 0;
 	virtual void FimTurno(Unidade * unidade, Sala * sala) = 0;
+	virtual int getPontos() const;
+	virtual void setPontos(int p);
 	
 };
 
