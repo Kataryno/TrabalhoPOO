@@ -14,6 +14,7 @@ class Unidade {
 	Sala * sala;
 	int maxHP;
 	Nave * nave;
+	bool oculta;
 
 protected:
 	vector <Caracteristica *> caracteristicas;
@@ -32,8 +33,11 @@ public:
 	bool getToxico();
 	
 	char getId() const;
+	bool getOculta() const;
+	void setOculta(bool o);
 	int getSala() const;
 	int getHp()const;
+	void setHp(int pontos);
 	int getMaxHP()const;
 	
 	vector <Caracteristica *> getCaracteristicas()const;
@@ -41,10 +45,14 @@ public:
 	void setCaracteriscaArmado();
 	void setMaxHP(int p);
 	void setNave(Nave * n);
+	vector<Sala*> getSalasNave();
 	void setId(char & identificacao);
+
+	virtual void setSalaUnidade(Sala * idsala);
 	void setSalaTripulacao(Sala * idsala);
 	void setSalaInimigo(Sala * idsala);
 	void setSalaXenomorfo(Sala * idsala);
+
 	void levaDano(int d);
 	void recebeVida(int v);
 	void setNome(string n);

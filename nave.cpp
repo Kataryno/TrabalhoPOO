@@ -317,72 +317,6 @@ string Nave::mostraTripulantes(Consola & consola) const
 //	return oss.str();
 //}
 
-void Nave::mostraOcupanteSalaInimigos(Consola & consola)
-{
-	ostringstream oss0, oss1, oss2, oss3, oss4, oss5, oss6, oss7, oss8, oss9, oss10, oss11;
-
-	consola.setTextColor(consola.VERMELHO);
-
-	for (unsigned int j = 0; j < inimigos.size(); j++)
-	{
-		if (inimigos[j] != nullptr)
-		{
-			switch (inimigos[j]->getSala())
-			{
-			case 0: oss0 << "I" << inimigos[j]->getId() << "-";
-				break;
-			case 1: oss1 << "I" << inimigos[j]->getId() << "-";
-				break;
-			case 2: oss2 << "I" << inimigos[j]->getId() << "-";
-				break;
-			case 3: oss3 << "I" << inimigos[j]->getId() << "-";
-				break;
-			case 4: oss4 << "I" << inimigos[j]->getId() << "-";
-				break;
-			case 5: oss5 << "I" << inimigos[j]->getId() << "-";
-				break;
-			case 6: oss6 << "I" << inimigos[j]->getId() << "-";
-				break;
-			case 7: oss7 << "I" << inimigos[j]->getId() << "-";
-				break;
-			case 8: oss8 << "I" << inimigos[j]->getId() << "-";
-				break;
-			case 9: oss9 << "I" << inimigos[j]->getId() << "-";
-				break;
-			case 10: oss10 << "I" << inimigos[j]->getId() << "-";
-				break;
-			case 11: oss11 << "I" << inimigos[j]->getId() << "-";
-				break;
-			}
-		}
-	}
-	consola.gotoxy(6, 4);
-	cout << oss0.str();
-	consola.gotoxy(18, 4);
-	cout << oss1.str();
-	consola.gotoxy(30, 4);
-	cout << oss2.str();
-	consola.gotoxy(42, 4);
-	cout << oss3.str();
-	consola.gotoxy(18, 16);
-	cout << oss4.str();
-	consola.gotoxy(30, 16);
-	cout << oss5.str();
-	consola.gotoxy(42, 16);
-	cout << oss6.str();
-	consola.gotoxy(54, 16);
-	cout << oss7.str();
-	consola.gotoxy(6, 28);
-	cout << oss8.str();
-	consola.gotoxy(18, 28);
-	cout << oss9.str();
-	consola.gotoxy(30, 28);
-	cout << oss10.str();
-	consola.gotoxy(42, 28);
-	cout << oss11.str();
-
-	consola.setTextColor(consola.BRANCO);
-}
 
 
 void Nave::mostraOcupanteSala(Consola & consola)
@@ -393,7 +327,7 @@ void Nave::mostraOcupanteSala(Consola & consola)
 
 	for (unsigned int j = 0; j < tripulantes.size(); j++)
 	{
-		if (tripulantes[j] != nullptr)
+		if (tripulantes[j] != nullptr && !tripulantes[j]->getOculta())
 		{
 			switch (tripulantes[j]->getSala())
 			{
@@ -427,31 +361,98 @@ void Nave::mostraOcupanteSala(Consola & consola)
 	consola.gotoxy(6, 3);
 	cout << oss0.str();
 	consola.gotoxy(18, 3);
-	cout << oss1.str(); 
+	cout << oss1.str();
 	consola.gotoxy(30, 3);
-	cout << oss2.str(); 
+	cout << oss2.str();
 	consola.gotoxy(42, 3);
 	cout << oss3.str();
 	consola.gotoxy(18, 15);
-	cout << oss4.str(); 
+	cout << oss4.str();
 	consola.gotoxy(30, 15);
-	cout << oss5.str(); 
+	cout << oss5.str();
 	consola.gotoxy(42, 15);
-	cout << oss6.str(); 
+	cout << oss6.str();
 	consola.gotoxy(54, 15);
-	cout << oss7.str(); 
+	cout << oss7.str();
 	consola.gotoxy(6, 27);
-	cout << oss8.str(); 
+	cout << oss8.str();
 	consola.gotoxy(18, 27);
-	cout << oss9.str(); 
+	cout << oss9.str();
 	consola.gotoxy(30, 27);
-	cout << oss10.str(); 
+	cout << oss10.str();
 	consola.gotoxy(42, 27);
+	cout << oss11.str();
+
+	consola.setTextColor(consola.BRANCO);
+}
+
+
+void Nave::mostraOcupanteSalaInimigos(Consola & consola)
+{
+	ostringstream oss0, oss1, oss2, oss3, oss4, oss5, oss6, oss7, oss8, oss9, oss10, oss11;
+
+	consola.setTextColor(consola.COR_DE_ROSA);
+
+	for (unsigned int j = 0; j < inimigos.size(); j++)
+	{
+		if (inimigos[j] != nullptr && !inimigos[j]->getOculta())
+		{
+			switch (inimigos[j]->getSala())
+			{
+			case 0: oss0 << inimigos[j]->getId() << "-";
+				break;
+			case 1: oss1 << inimigos[j]->getId() << "-";
+				break;
+			case 2: oss2 << inimigos[j]->getId() << "-";
+				break;
+			case 3: oss3 << inimigos[j]->getId() << "-";
+				break;
+			case 4: oss4 << inimigos[j]->getId() << "-";
+				break;
+			case 5: oss5 << inimigos[j]->getId() << "-";
+				break;
+			case 6: oss6 << inimigos[j]->getId() << "-";
+				break;
+			case 7: oss7 << inimigos[j]->getId() << "-";
+				break;
+			case 8: oss8 << inimigos[j]->getId() << "-";
+				break;
+			case 9: oss9 << inimigos[j]->getId() << "-";
+				break;
+			case 10: oss10 << inimigos[j]->getId() << "-";
+				break;
+			case 11: oss11 << inimigos[j]->getId() << "-";
+				break;
+			}
+		}
+	}
+	consola.gotoxy(6, 4);
+	cout << oss0.str();
+	consola.gotoxy(18, 4);
+	cout << oss1.str(); 
+	consola.gotoxy(30, 4);
+	cout << oss2.str(); 
+	consola.gotoxy(42, 4);
+	cout << oss3.str();
+	consola.gotoxy(18, 16);
+	cout << oss4.str(); 
+	consola.gotoxy(30, 16);
+	cout << oss5.str(); 
+	consola.gotoxy(42, 16);
+	cout << oss6.str(); 
+	consola.gotoxy(54, 16);
+	cout << oss7.str(); 
+	consola.gotoxy(6, 28);
+	cout << oss8.str(); 
+	consola.gotoxy(18, 28);
+	cout << oss9.str(); 
+	consola.gotoxy(30, 28);
+	cout << oss10.str(); 
+	consola.gotoxy(42, 28);
 	cout << oss11.str();
 	
 	consola.setTextColor(consola.BRANCO);
 }
-
 
 void Nave::mostraOcupanteSalaXenomorfos(Consola & consola)
 {
@@ -461,33 +462,33 @@ void Nave::mostraOcupanteSalaXenomorfos(Consola & consola)
 
 	for (unsigned int j = 0; j < xenomorfos.size(); j++)
 	{
-		if (xenomorfos[j] != nullptr)
+		if (xenomorfos[j] != nullptr && !xenomorfos[j]->getOculta()) ////ATENÇÂO
 		{
 			switch (xenomorfos[j]->getSala())
 			{
-			case 0: oss0 << "X-" << xenomorfos[j]->getId() << "-";
+			case 0: oss0 << xenomorfos[j]->getId() << "-";
 				break;
-			case 1: oss1 << "X-" << xenomorfos[j]->getId() << "-";
+			case 1: oss1 << xenomorfos[j]->getId() << "-";
 				break;
-			case 2: oss2 << "X-" << xenomorfos[j]->getId() << "-";
+			case 2: oss2 << xenomorfos[j]->getId() << "-";
 				break;
-			case 3: oss3 << "X-" << xenomorfos[j]->getId() << "-";
+			case 3: oss3 << xenomorfos[j]->getId() << "-";
 				break;
-			case 4: oss4 << "X-" << xenomorfos[j]->getId() << "-";
+			case 4: oss4 << xenomorfos[j]->getId() << "-";
 				break;
-			case 5: oss5 << "X-" << xenomorfos[j]->getId() << "-";
+			case 5: oss5 << xenomorfos[j]->getId() << "-";
 				break;
-			case 6: oss6 << "X-" << xenomorfos[j]->getId() << "-";
+			case 6: oss6 << xenomorfos[j]->getId() << "-";
 				break;
-			case 7: oss7 << "X-" << xenomorfos[j]->getId() << "-";
+			case 7: oss7 << xenomorfos[j]->getId() << "-";
 				break;
-			case 8: oss8 << "X-" << xenomorfos[j]->getId() << "-";
+			case 8: oss8 << xenomorfos[j]->getId() << "-";
 				break;
-			case 9: oss9 << "X-" << xenomorfos[j]->getId() << "-";
+			case 9: oss9 << xenomorfos[j]->getId() << "-";
 				break;
-			case 10: oss10 << "X-" << xenomorfos[j]->getId() << "-";
+			case 10: oss10 << xenomorfos[j]->getId() << "-";
 				break;
-			case 11: oss11 << "X-" << xenomorfos[j]->getId() << "-";
+			case 11: oss11 << xenomorfos[j]->getId() << "-";
 				break;
 			}
 		}
@@ -578,6 +579,7 @@ void Nave::FimTurno()
 {
 	//1º Efeitos Ambientais
 	AmbientaisInicioTurno(salas);
+	
 	//2º Salas
 	for (unsigned int i = 0; i < salas.size(); i++)
 		salas[i]->FimTurno(salas);
@@ -962,9 +964,9 @@ void Nave::removeSalasAdjacentes()
 
 //PARA APAGAR
 ///Função para criar Blobs para teste de gases tóxicos
-void Nave::criaBlobs()
-{
-	for (int i = 0; i < 12; i++)
-		xenomorfos.push_back(new UniBlob(65 + xenomorfos.size(), salas[i], this));
-	xenomorfos.push_back(new UniGeigermorfo(65 + xenomorfos.size(), salas[6], this));
-}
+//void Nave::criaBlobs()
+//{
+//	for (int i = 0; i < 1; i++)
+//		xenomorfos.push_back(new UniGeigermorfo(65 + xenomorfos.size(), salas[i], this));
+//	//xenomorfos.push_back(new UniGeigermorfo(65 + xenomorfos.size(), salas[6], this));
+//}

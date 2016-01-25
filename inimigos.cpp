@@ -1,7 +1,7 @@
-
 #include "unidade.h"
 #include "inimigos.h"
 #include "libraries.h"
+#include "sala.h"
 
 
 Inimigos::Inimigos(char identificacao)
@@ -25,4 +25,9 @@ string Inimigos::getAsString() const
 void Inimigos::eliminaUnidade()
 {
 	eliminaInimigo();
+}
+
+void Inimigos::setSalaUnidade(Sala * idsala)
+{
+	setSalaInimigo(idsala);
 }

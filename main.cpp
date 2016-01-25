@@ -45,8 +45,8 @@ void preparaConsola(Consola & consola)
 
 void inicioTurno(Nave & nave, Consola & consola)
 {
-	consola.gotoxy(18, 43);
-	cout << "TURNO: " << n_turnos << endl;
+	//consola.gotoxy(18, 43);
+	//cout << "TURNO: " << n_turnos << endl;
 	nave.InicioTurno();
 }
 
@@ -90,7 +90,7 @@ void main() {
 	Consola consola;
 	Nave Apollo;
 
-	bool jogoActivo = false,naveDestruida=false;
+	bool jogoActivo = false, naveDestruida = false, tripulacaoMorta = false;
 	const int distanciaFixa = 4000;
 	const int distanciaPorNivel = 1000;
 	int distanciaTotal = 0;
@@ -169,22 +169,29 @@ void main() {
 				distanciaTotal = distanciaFixa + distanciaPorNivel * nivel;
 				while (1)
 				{
-		/*			consola.clrscr();
-					desenhaMoldura(consola);
-					desenhaNave(Apollo, consola);
-					mostraNomeSalas(Apollo, consola);
-					mostraIdSalas(consola);*/
-
+					//Inicio de turno
 					inicioTurno(Apollo, consola);
-					faseOrdens(Apollo, consola, jogoActivo);
-					fimTurno(Apollo, consola);
-					if (naveDestruida = Apollo.statusNave())
+					if ((naveDestruida = Apollo.statusNave()) || (tripulacaoMorta = Apollo.naveConfiguradaTripulantes()))
 						break;
+
+					Interface(consola, Apollo);
+
+					//Fase de Ordens
+					faseOrdens(Apollo, consola, jogoActivo);
+
+					//Fim de turno
+					fimTurno(Apollo, consola);
+					if ((naveDestruida = Apollo.statusNave()) || (tripulacaoMorta = Apollo.naveConfiguradaTripulantes()))
+						break;
+
+					//Avanço da nave
 					Apollo.avancaNave();
 
+					//Eventos
 					eventos(Apollo, n_turnos);
-					if (naveDestruida = Apollo.statusNave())
+					if ((naveDestruida = Apollo.statusNave()) || (tripulacaoMorta = Apollo.naveConfiguradaTripulantes()))
 						break;
+
 					n_turnos++;
 
 					if (Apollo.getDistanciaPercorrida() >= distanciaTotal)
@@ -194,14 +201,44 @@ void main() {
 				jogoActivo = false;
 				if (naveDestruida)
 				{
+					Interface(consola, Apollo);
+					consola.gotoxy(18, 40);
+					cout << "Distancia percorrida: " << Apollo.getDistanciaPercorrida();
+					consola.gotoxy(18, 42);
+					cout << "TURNO: " << n_turnos << endl;
+					Apollo.mostraIntegridadeSalas(Apollo, consola);
+					Apollo.mostraOxigenioSalas(Apollo, consola);
+					Apollo.mostraEfeitosAmbientaisSalas(Apollo, consola);
+
+					consola.setTextColor(consola.VERMELHO_CLARO);
 					consola.gotoxy(1, 57);
-					cout << "Nave destruída: Fim de Jogo";
+					cout << "Nave destruida: Fim de Jogo";
+					consola.setTextColor(consola.BRANCO);
+					consola.getch();
+				}
+				else if (tripulacaoMorta)
+				{
+					Interface(consola, Apollo);
+					consola.gotoxy(18, 40);
+					cout << "Distancia percorrida: " << Apollo.getDistanciaPercorrida();
+					consola.gotoxy(18, 42);
+					cout << "TURNO: " << n_turnos << endl;
+					Apollo.mostraIntegridadeSalas(Apollo, consola);
+					Apollo.mostraOxigenioSalas(Apollo, consola);
+					Apollo.mostraEfeitosAmbientaisSalas(Apollo, consola);
+
+					consola.setTextColor(consola.VERMELHO_CLARO);
+					consola.gotoxy(1, 57);
+					cout << "Tripulacao Morta: Fim de Jogo";
+					consola.setTextColor(consola.BRANCO);
 					consola.getch();
 				}
 				else
 				{
+					consola.setTextColor(consola.VERDE_CLARO);
 					consola.gotoxy(1, 57);
 					cout << "Chegou ao destino - " << Apollo.getDistanciaPercorrida() << " / " << distanciaTotal;
+					consola.setTextColor(consola.BRANCO);
 					consola.getch();
 				}
 			}
@@ -526,14 +563,7 @@ void TratamentoComandos(Nave & nave, Consola & consola, bool & jogoActivo)
 
 	while (true)
 	{
-		consola.clrscr();
-		desenhaMoldura(consola);
-		desenhaNave(nave, consola);
-		mostraNomeSalas(nave, consola);
-		mostraIdSalas(consola);
-		nave.mostraOcupanteSala(consola);
-		nave.mostraOcupanteSalaInimigos(consola);
-		nave.mostraOcupanteSalaXenomorfos(consola);
+		Interface(consola, nave);
 
 		if (jogoActivo)
 		{

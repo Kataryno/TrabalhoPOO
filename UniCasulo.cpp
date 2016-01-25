@@ -12,6 +12,7 @@ UniCasulo::UniCasulo(char identificacao, Sala * sala, Nave * n) : UniXenomorfo(i
 	setNave(n);
 	setNome("Casulo");
 	hp = 6;
+	setMaxHP(hp);
 	caracteristicas.push_back(new CaractXenomorfo(0));
 	caracteristicas.push_back(new Exoesqueleto(1));
 	setSalaXenomorfo(sala);

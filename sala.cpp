@@ -38,21 +38,23 @@ bool Sala::getOperada() const
 	//Verifica se a integridade está a 100%, se está alguém da tripulação na sala e se não está nenhum inimigo ou xenomorfo na sala.
 	//Basta que uma destas condições não se verifique para que a sala não esteja a ser operada.
 	
-	if (integridade == 100 && ocupantesTripulacao.size() != 0 && (ocupantesXenomorfos.size() == 0 || ocupantesInimigos.size() == 0))
+	if (integridade == 100 && ocupantesTripulacao.size() != 0 && (ocupantesXenomorfos.size() == 0 && ocupantesInimigos.size() == 0))
+	{	
 		//Verifica se há alguém da triplução com a característica de Operador
 		for (int i = 0; i < ocupantesTripulacao.size(); i++)
 			if (operada = ocupantesTripulacao[i]->getOperador())
 				break;
 
-	//Contudo, existe uma excepção que é no caso de a sala estar a 100% e ter um xenomorfo do tipo blob. O blob tem a característica de operador.
-	//Não pode existir tripulação nem inimigos na sala, senão estão em combate uns com os outros
-
-	else if (integridade == 100 && ocupantesXenomorfos.size() != 0 && (ocupantesTripulacao.size() == 0 || ocupantesInimigos.size() == 0))
+		//Contudo, existe uma excepção que é no caso de a sala estar a 100% e ter um xenomorfo do tipo blob. O blob tem a característica de operador.
+		//Não pode existir tripulação nem inimigos na sala, senão estão em combate uns com os outros
+	}
+	else if (integridade == 100 && ocupantesXenomorfos.size() != 0 && (ocupantesTripulacao.size() == 0 && ocupantesInimigos.size() == 0))
+	{
 		//Verifica se há algum xenomorfo com a característica de Operador
 		for (int i = 0; i < ocupantesXenomorfos.size(); i++)
 			if (operada = ocupantesXenomorfos[i]->getOperador())
 				break;
-
+	}
 	return operada;
 }
 
@@ -315,20 +317,27 @@ void Sala::eliminaSalaAdjacente()
 
 void Sala::gasesToxicos(int pontos)
 {
+	vector<Unidade *> aux;
+	
+	//Cria-se um vector auxiliar para poder percorrer todo o vector, sem existir a possibilidade de deixar algum elemento por verificar, devido ao vector ter sido mudificado.
+	aux = ocupantesTripulacao; 
+	
 	//Percorre o vector da tripulação
-	for (int i = 0; i < ocupantesTripulacao.size(); i++)
-		if (!ocupantesTripulacao[i]->getToxico())
-			ocupantesTripulacao[i]->levaDano(pontos);
+	for (int i = 0; i < aux.size(); i++)
+		if (!aux[i]->getToxico())
+			aux[i]->levaDano(pontos);
 
 	//Percorre o vector de inimigos
-	for (int i = 0; i < ocupantesInimigos.size(); i++)
-		if (!ocupantesInimigos[i]->getToxico())
-			ocupantesInimigos[i]->levaDano(pontos);
+	aux = ocupantesInimigos;
+	for (int i = 0; i < aux.size(); i++)
+		if (!aux[i]->getToxico())
+			aux[i]->levaDano(pontos);
 
 	//Percorre o vector de xenomorfos
-	for (int i = 0; i < ocupantesXenomorfos.size(); i++)
-		if (!ocupantesXenomorfos[i]->getToxico())
-			ocupantesXenomorfos[i]->levaDano(pontos);
+	aux = ocupantesXenomorfos;
+	for (int i = 0; i < aux.size(); i++)
+		if (!aux[i]->getToxico())
+			aux[i]->levaDano(pontos);
 }
 
 //Para apagar. A função fazia uma cópia do tripulante em vez de ficar a apontar para a lista

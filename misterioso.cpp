@@ -1,5 +1,6 @@
 #include "misterioso.h"
 #include "sala.h"
+#include "unidade.h"
 
 void Misterioso::InicioTurno(Unidade * unidade, Sala * sala)
 {
@@ -8,7 +9,20 @@ void Misterioso::InicioTurno(Unidade * unidade, Sala * sala)
 
 void Misterioso::FimTurno(Unidade * unidade, Sala * sala)
 {
-	//Falta desenvolver ataque contra hipnotizador ou inimigo
+	if (unidade->getOculta())
+	{
+		vector<Sala *> s;
+		s = unidade->getSalasNave();
+		unidade->setOculta(false);
+		int idSala = rand() % 11;
+		unidade->setSalaUnidade(s[idSala]);
+	}
+	else
+	{
+		int probEvento = rand() % 100 + 1;
+		if (probEvento <= 25)					//Compara o nº gerado com a percentagem definida
+			unidade->setOculta(true);
+	}
 }
  
 Misterioso::Misterioso() : Caracteristica("Misterioso")

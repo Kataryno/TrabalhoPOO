@@ -25,3 +25,8 @@ void UniXenomorfo::eliminaUnidade()
 {
 	eliminaXenomorfo();
 }
+
+void UniXenomorfo::setSalaUnidade(Sala * idsala)
+{
+	setSalaXenomorfo(idsala);
+}

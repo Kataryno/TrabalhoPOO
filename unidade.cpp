@@ -2,12 +2,14 @@
 #include "caracteristica.h"
 #include "armado.h"
 #include "nave.h"
+//#include "sala.h"
 #include <algorithm>
 
 Unidade::Unidade()
 {
 	sala = nullptr;
 	nave = nullptr;
+	oculta = false;
 }
 
 Unidade::~Unidade()
@@ -38,6 +40,16 @@ void Unidade::setId(char & identificacao)
 char Unidade::getId() const
 {
 	return id;
+}
+
+bool Unidade::getOculta() const
+{
+	return oculta;
+}
+
+void Unidade::setOculta(bool o)
+{
+	oculta = o;
 }
 
 void Unidade::levaDano(int d)
@@ -93,6 +105,9 @@ string Unidade::getNome() const
 	return nome;
 }
 
+void Unidade::setSalaUnidade(Sala * idsala)
+{
+}
 
 void Unidade::setSalaTripulacao(Sala * idsala)
 {
@@ -131,6 +146,11 @@ int Unidade::getSala() const
 int Unidade::getHp() const
 {
 	return hp;
+}
+
+void Unidade::setHp(int pontos)
+{
+	hp = pontos;
 }
 
 int Unidade::getMaxHP() const
@@ -178,4 +198,9 @@ bool Unidade::getToxico()
 void Unidade::setNave(Nave * n)
 {
 	nave = n;
+}
+
+vector<Sala*> Unidade::getSalasNave()
+{
+	return nave->getVectorSalas();
 }

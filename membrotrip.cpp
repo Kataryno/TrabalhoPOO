@@ -7,6 +7,7 @@
 #include "caractoperador.h"
 #include "caracteristica.h"
 #include "Caracttripulacao.h"
+#include "regenerador.h"
 
 MembroTrip::MembroTrip(char identificacao, Nave * n) : Tripulacao(identificacao)
 {
