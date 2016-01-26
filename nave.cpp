@@ -67,13 +67,6 @@ Nave::Nave()
 
 Nave::~Nave()
 {
-	/*for (unsigned int i = 0; i < tripulantes.size(); i++)
-		delete tripulantes[i];
-
-	for (unsigned int i = 0; i < salas.size(); i++)
-		delete salas[i];*/
-	
-
 }
 
 void Nave::criaTripulacao()
@@ -81,13 +74,11 @@ void Nave::criaTripulacao()
 	//bool AposentoCapitao, OficinaRobot;
 	//Percorrer as salas da nave e contar o número de Salas de Beliche
 	//Incrementar totalTripulantes se encontrar alguma
-	//Debug: cout << "Antes de verificar sala de beliches: " << totalTripulantes << endl;
 	for (unsigned int i = 0; i < salas.size(); i++)
 	{
 		if (salas[i]->getNome() == "Beliche")
 			totalTripulantes++;
 	}
-	//Debug: cout << "Depois de verificar sala de beliches: " << totalTripulantes << endl;
 	
 	//True AposentoCapitao se houver 
 	//True OficinaRobot se houver 
@@ -109,14 +100,12 @@ void Nave::criaTripulacao()
 		{
 			tripulantes.push_back(new MembroTrip(65 + i, this));
 		}
-		//tripulantes[i]->setId = (char)41 + 1;
 	}
 }
 
 void Nave::criaInimigos()
 {
 	int idSala;
-	//rand()%(max-min + 1) + min;
 	//Preenche o vector de inimigos quando o evento Ataque de inimigos coloca piratas na nave
 		int nInimigos = rand() % (5 - 3 + 1) + 3; //aleatorio entre 3 e 5
 
@@ -129,10 +118,8 @@ void Nave::criaInimigos()
 
 void Nave::criaXenomorfos()
 {
-	//rand()%(max-min + 1) + min;
 
 	//Preenche o vector de xenomorfos quando o evento Ataque de Xenomorfo coloca um xenomorfo na nave
-
 	int idSala = rand() % 11;
 	int tipoXenomorfo = rand() % 2;
 	switch (tipoXenomorfo)
@@ -148,10 +135,13 @@ void Nave::criaXenomorfos()
 	}
 }
 
-//void Nave::atribuiSalaInimigo(int & pos, int idSala)
-//{
-//	inimigos[pos]->setSala(salas[idSala]);
-//}
+char Nave::criaCasulo(int idSala)
+{
+	//Preenche o vector de xenomorfos quando a característica casulo é esecutada
+
+	xenomorfos.push_back(new UniCasulo(65 + xenomorfos.size(), salas[idSala], this));
+	return 65 + xenomorfos.size();
+}
 
 string Nave::getAsString() const
 {
@@ -287,7 +277,7 @@ char Nave::getIdTripulante(int & pos) const
 string Nave::mostraTripulantes(Consola & consola) const
 {
 	ostringstream oss;
-	consola.setTextColor(consola.VERDE_CLARO);
+	
 	for (unsigned int i = 0; i < tripulantes.size(); i++)
 	{
 		if (tripulantes[i] != nullptr)
@@ -298,27 +288,8 @@ string Nave::mostraTripulantes(Consola & consola) const
 		else
 			oss << "Vazio" << endl;
 	}
-	consola.setTextColor(consola.BRANCO);
 	return oss.str();
 }
-
-//string Nave::mostraTripulantes(Consola & consola) const
-//{
-//	ostringstream oss;
-//
-//	consola.gotoxy(1, 45);
-//
-//	for (unsigned int i = 0; i < tripulantes.size(); i++)
-//	{
-//		if (tripulantes[i] != nullptr)
-//			oss << tripulantes[i]->getAsString() << endl;
-//		else
-//			oss << "Vazio" << endl;
-//	}
-//	return oss.str();
-//}
-
-
 
 void Nave::mostraOcupanteSala(Consola & consola)
 {
@@ -889,85 +860,3 @@ void Nave::removeSalasAdjacentes()
 			salas[i]->eliminaSalaAdjacente();
 }
 
-//void Nave::atribuiSala(int & pos, int idSala)
-//{
-//	tripulantes[pos]->setSala(idSala);
-//}
-
-//
-//void Nave::adicionaSala(int pos)
-//{
-//	if (salas[pos] == nullptr)
-//		
-//		;
-//}
-
-
-//void Nave::mostraOcupanteSala(Consola & consola)
-//{
-//	ostringstream oss0, oss1, oss2, oss3, oss4, oss5, oss6, oss7, oss8, oss9, oss10, oss11;
-//
-//
-//	consola.setTextColor(consola.VERDE_CLARO);
-//
-//	for (unsigned int j = 0; j < tripulantes.size(); j++)
-//	{
-//		if (tripulantes[j] != nullptr)
-//		{
-//			//oss << tripulantes[j]->getId << "-" << endl;
-//			switch (tripulantes[j]->getSala())
-//			{
-//			case 0: oss0 << tripulantes[j]->getId() << "-";
-//				break;
-//			case 1: consola.gotoxy(18, 3);
-//				break;
-//			case 2: consola.gotoxy(30, 3);
-//				break;
-//			case 3: consola.gotoxy(42, 3);
-//				break;
-//			case 4: consola.gotoxy(18, 15);
-//				break;
-//			case 5: consola.gotoxy(30, 15);
-//				break;
-//			case 6: consola.gotoxy(42, 15);
-//				break;
-//			case 7: consola.gotoxy(54, 15);
-//				break;
-//			case 8: consola.gotoxy(6, 27);
-//				break;
-//			case 9: consola.gotoxy(18, 27);
-//				break;
-//			case 10: consola.gotoxy(30, 27);
-//				break;
-//			case 11: consola.gotoxy(42, 27);
-//				break;
-//			}
-//			cout << tripulantes[j]->getId() << "-";
-//		}
-//	}
-//	consola.gotoxy(6, 3);
-//	consola.gotoxy(18, 3);
-//	consola.gotoxy(30, 3);
-//	consola.gotoxy(42, 3);
-//	consola.gotoxy(18, 15);
-//	consola.gotoxy(30, 15);
-//	consola.gotoxy(42, 15);
-//	consola.gotoxy(54, 15);
-//	consola.gotoxy(6, 27);
-//	consola.gotoxy(18, 27);
-//	consola.gotoxy(30, 27);
-//	consola.gotoxy(42, 27);
-//
-//
-//	consola.setTextColor(consola.BRANCO);
-//}
-
-
-//PARA APAGAR
-//Função para criar Blobs para teste de gases tóxicos
-//void Nave::criaBlobs()
-//{
-//	for (int i = 0; i < 11; i++)
-//		xenomorfos.push_back(new UniMxyzypykwi(65 + xenomorfos.size(), salas[i], this));
-//	//xenomorfos.push_back(new UniGeigermorfo(65 + xenomorfos.size(), salas[6], this));
-//}

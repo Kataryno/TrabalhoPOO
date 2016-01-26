@@ -88,6 +88,7 @@ public:
 
 	//Xenomorfos Related
 	void criaXenomorfos();
+	char criaCasulo(int idSala);
 	int pesquisaXenomorfo(char identificacao) const;
 	void mostraOcupanteSalaXenomorfos(Consola & consola);
 	bool eliminaXenomorfo(Unidade * unidade);
