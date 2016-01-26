@@ -8,7 +8,10 @@ class Unidade;
 
 class Casulo : public Caracteristica {
 	int pontos;
-
+	//int tipoUnidade;	//0 para tripulante, 1 para inimigo
+	//bool casuloColocado;
+	//int contador;
+	//char idCasulo;
 public:
 	Casulo(int p);
 	virtual string getAsString() const;

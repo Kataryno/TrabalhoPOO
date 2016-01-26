@@ -13,7 +13,7 @@ class Indeciso : public Caracteristica {
 
 public:
 	Indeciso();
-	//Indeciso(int p);
+
 	virtual string getAsString() const;
 	void InicioTurno(Unidade * unidade, Sala * sala);
 	void FimTurno(Unidade * unidade, Sala * sala);

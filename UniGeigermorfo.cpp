@@ -9,6 +9,8 @@
 #include "CaractXenomorfo.h"
 #include "Misterioso.h"
 #include "mover.h"
+#include "casulo.h"
+#include "exoesqueleto.h"
 
 
 UniGeigermorfo::UniGeigermorfo(char identificacao, Sala * sala, Nave * n) : UniXenomorfo(identificacao)
@@ -20,6 +22,8 @@ UniGeigermorfo::UniGeigermorfo(char identificacao, Sala * sala, Nave * n) : UniX
 	caracteristicas.push_back(new CaractXenomorfo(3));
 	caracteristicas.push_back(new Misterioso());
 	caracteristicas.push_back(new Mover(50));
+	caracteristicas.push_back(new Casulo(20));
+	caracteristicas.push_back(new Exoesqueleto(3));
 	setSalaXenomorfo(sala);
 }
 

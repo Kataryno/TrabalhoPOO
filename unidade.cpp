@@ -79,23 +79,9 @@ void Unidade::levaDano(int d)
 }
 
 
-//void Unidade::levaDano(int d)
-//{
-//	hp -= d;
-//	if (hp == 0)
-//		eliminaUnidade();
-//}
-
-
 void Unidade::eliminaUnidade()
 {
 }
-//void Unidade::eliminaUnidade()
-//{
-//	sala->apagaOcupanteTripulacao(this);
-//	sala = nullptr;
-//	nave->eliminaTripulante(this);
-//}
 
 void Unidade::eliminaTripulante()
 {

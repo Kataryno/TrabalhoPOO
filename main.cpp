@@ -45,8 +45,6 @@ void preparaConsola(Consola & consola)
 
 void inicioTurno(Nave & nave, Consola & consola)
 {
-	//consola.gotoxy(18, 43);
-	//cout << "TURNO: " << n_turnos << endl;
 	nave.InicioTurno();
 }
 
@@ -97,8 +95,6 @@ void main() {
 	
 	preparaConsola(consola);
 	desenhaMoldura(consola);
-	//desenhaNave(Apollo, consola);
-	//mostraNomeSalas(Apollo, consola);
 	
 	vector<string> opcoes;
 	opcoes.push_back("Sair");
@@ -247,47 +243,11 @@ void main() {
 			setNivel(consola);
 			break;
 		case 7:	
-			Apollo.preencheNaveAuto();
-			//Apollo.criaBlobs();
 			break;
 		}
 
 	} while (opcao != 0);
 
-	/*//Ciclo de jogo
-	jogoActivo = true;
-	
-	distanciaTotal = distanciaFixa + distanciaPorNivel * nivel;
-	while (1)
-	{
-		consola.clrscr();
-		desenhaMoldura(consola);
-		desenhaNave(Apollo, consola);
-		mostraNomeSalas(Apollo, consola);
-		mostraIdSalas(consola);
-
-		inicioTurno(Apollo, consola);
-		faseOrdens(Apollo, consola, jogoActivo);
-		fimTurno(Apollo, consola);
-		if (naveDestruida = Apollo.statusNave())
-			break;
-		Apollo.avancaNave();
-
-		eventos(Apollo, consola);
-		if (naveDestruida = Apollo.statusNave())
-			break;
-		n_turnos++;
-
-		if (Apollo.getDistanciaPercorrida() >= distanciaTotal)
-			break;
-	}
-
-	jogoActivo = false;
-	if (naveDestruida)
-	{ 
-		cout << "Nave destruída: Fim de Jogo" << endl;
-	}else
-	cout << "Chegou ao destino - " << Apollo.getDistanciaPercorrida() << " / " << distanciaTotal;*/
 }
 
 int escolheOpcao(vector<string> opcoes, Consola & consola, int x, int y)
@@ -480,10 +440,6 @@ void opcaoConfigurarNave(Nave & nave, Consola & consola)
 	
 	//Chama função que preenche o vector de salasAddjacecntes de cada sala da nave
 	nave.preencheSalasAdjacentes();
-
-	//Para testes. Apagar depois
-	nave.criaInimigos();
-	//nave.criaXenomorfos();
 }
 
 void opcaoConfigurarTripulacao(Nave & nave, Consola & consola, bool & jogoActivo)
@@ -495,58 +451,6 @@ void opcaoConfigurarTripulacao(Nave & nave, Consola & consola, bool & jogoActivo
 		nave.criaTripulacao();
 
 	TratamentoComandos(nave, consola, jogoActivo);
-
-	/*while (true)
-	{*/
-		
-		//consola.clrscr();
-		//desenhaMoldura(consola);
-		//desenhaNave(nave, consola);
-		//mostraNomeSalas(nave, consola);
-		//mostraIdSalas(consola);
-		//nave.mostraOcupanteSala(consola);
-
-		//consola.gotoxy(1, 45);
-		//cout << nave.mostraTripulantes() << endl;
-
-		//consola.gotoxy(1, 57);
-		//cout << "Comando > ";
-
-		//getline(cin, entrada);
-		//if (entrada == "fim")
-		//	break;
-		//istringstream iss(entrada);
-
-		////Verifica se é comando de mover a tripulação
-		//if ((entrada.length() == 2) && (entrada[1] - 48 >= 0 && entrada[1] - 48 <= 9))
-		//{
-		//	pos = nave.pesquisaTripulante((char)toupper(entrada[0]));
-		//	if (pos >= 0)
-		//	{
-		//		idSala = entrada[1] - 48;
-		//		if (idSala >= 0 && idSala <= 12)
-		//			nave.atribuiSala(pos, idSala - 1);
-
-		//		
-		//	}
-		//}
-		//else if ((entrada.length() == 3) && (entrada[2] - 48 >= 0 && entrada[2] - 48 <= 9))
-		//{
-		//	pos = nave.pesquisaTripulante((char)toupper(entrada[0]));
-		//	if (pos >= 0)
-		//	{
-		//		idSala = (entrada[1] - 48) * 10 + (entrada[2] - 48);
-		//		if (idSala >= 0 && idSala <= 12)
-		//			nave.atribuiSala(pos, idSala - 1);
-		//		
-		//	}
-		//}
-		//else
-		//{
-		//	
-		//}
-		
-	/*}*/
 }
 
 void opcaoPesquisarSala(const Nave & nave) {
@@ -580,11 +484,9 @@ void TratamentoComandos(Nave & nave, Consola & consola, bool & jogoActivo)
 		nave.mostraTripulantes(consola);
 		nave.mostraInimigos(consola);
 		nave.mostraXenomorfos(consola);
-		//cout << nave.mostraTripulantes(consola) << endl;
 		consola.gotoxy(2, 57);
 		cout << "Comando > ";
 
-		//cin.ignore(1000,'\n'); //limpa o buffer
 
 		getline(cin, entrada);
 		if (entrada == "fim")
